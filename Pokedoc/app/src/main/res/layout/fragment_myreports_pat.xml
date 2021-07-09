@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layout">
+
+    <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:fontFamily="@font/amaranth_bold"
+            android:text="My Reports"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/mainlayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amaranth_italic"
+                android:hint="Enter Name of File"
+                android:textSize="22sp"
+                android:id="@+id/txt_pdfName"/>
+
+        <Button
+                android:id="@+id/btn_Upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/amaranth_bold"
+                android:text="Upload"
+                android:layout_marginTop="50dp"/>
+
+        <Button
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amaranth_bold"
+                android:layout_gravity="center"
+                android:text="View PDF Files"
+                android:layout_marginTop="30dp"
+                android:id="@+id/btn_viewFiles"/>
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

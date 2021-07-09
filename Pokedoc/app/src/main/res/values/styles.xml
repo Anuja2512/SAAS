@@ -1,0 +1,18 @@
+<resources>
+    <!-- Base application theme. -->
+    <!--  Theme for App -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+        <item name="materialTimePickerTheme">@style/AppTheme.MaterialTimePickerTheme</item>
+    </style>
+
+
+    <!-- Theme for Material Time Picker - default for app -->
+    <style name="AppTheme.MaterialTimePickerTheme" parent="ThemeOverlay.MaterialComponents.TimePicker">
+
+    </style>
+    <style name="AppTheme.Toolbar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+</resources>

@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item android:id="@+id/HomeTab"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home"
-
-        />
+          android:title="Home"
+          />
+    <item android:id="@+id/ProfileTab"
+          android:title="Profile"
+          />
     <item android:id="@+id/ContactUs"
-        android:title="ContactUs"
-        android:icon="@android:drawable/stat_sys_speakerphone"/>
-
+          android:title="ContactUs"
+    />
     <item android:id="@+id/SettingsTab"
-        android:icon="@drawable/ic_baseline_settings_24"
-        android:title="Settings"
-        />
+          android:title="Settings"
+          />
     <item android:id="@+id/LogoutTab"
-
-        android:title="Logout"
-        android:icon="@android:drawable/ic_lock_power_off"/>
+          android:title="Logout"
+          />
 </menu>

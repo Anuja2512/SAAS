@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".RegisterActivity" android:background="@drawable/back" android:id="@+id/layout">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".RegisterActivity" android:background="@drawable/back" android:id="@+id/layout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" android:id="@+id/constraintLayout"
-        tools:layout_editor_absoluteY="139dp" tools:layout_editor_absoluteX="0dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/constraintLayout"
+            tools:layout_editor_absoluteY="139dp" tools:layout_editor_absoluteX="0dp">
 
         <TextView
             android:id="@+id/REnrollment"
@@ -156,15 +156,15 @@
             app:layout_constraintTop_toBottomOf="@+id/REmailTxt" />
 
         <RadioGroup
-            android:id="@+id/raiogroup"
-            android:layout_width="295dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:showDividers="beginning|middle|end"
-            app:layout_constraintTop_toBottomOf="@+id/RPhoneTxt"
-            tools:ignore="MissingConstraints"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="4dp">
+                android:id="@+id/raiogroup"
+                android:layout_width="295dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:showDividers="beginning|middle|end"
+                app:layout_constraintTop_toBottomOf="@+id/RPhoneTxt"
+                tools:ignore="MissingConstraints"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="4dp">
 
             <RadioButton
                 android:id="@+id/Male"
@@ -191,13 +191,13 @@
                 android:text="Female"
                 app:layout_constraintEnd_toEndOf="parent" />
             <EditText
-                android:id="@+id/REnrollmentTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="32dp"
-                android:inputType="number"
-                android:hint="Enter Enrollment number"/>
+                    android:id="@+id/REnrollmentTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="32dp"
+                    android:inputType="number"
+                    android:hint="Enter Enrollment number"/>
         </RadioGroup>
 
         <EditText
@@ -232,15 +232,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="15dp"
             android:background="#9C2196F3"
             android:fontFamily="@font/alegreya_sc_bold_italic"
             android:text="Submit"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/RConfirmPassTxt" app:backgroundTint="#AB2196F3"/>
+            app:layout_constraintTop_toBottomOf="@+id/RConfirmPassTxt" />
+
         <Button
             android:id="@+id/RtoLSwitchBtn"
             android:layout_width="wrap_content"

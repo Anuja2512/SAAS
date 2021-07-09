@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "266879392558",
+    "project_id": "pokedoc-1434d",
+    "storage_bucket": "pokedoc-1434d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266879392558:android:b0cebf96d9950a4f6ff8bf",
+        "android_client_info": {
+          "package_name": "com.example.pokedoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266879392558-t936bjfqtakdf8vhi3eq22idvqknimqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pokedoc",
+            "certificate_hash": "c842631019efa49ef0dc76d553c84fea3408add2"
+          }
+        },
+        {
+          "client_id": "266879392558-9a2boe6mk12n8nisvl3at9bf4h00bl13.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjdr3Kvhgi5kwMwo4J0ruOEE7BkJZ0xgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266879392558-9a2boe6mk12n8nisvl3at9bf4h00bl13.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

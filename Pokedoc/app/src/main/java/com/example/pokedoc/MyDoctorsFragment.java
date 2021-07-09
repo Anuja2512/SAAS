@@ -1,63 +1,119 @@
 package com.example.pokedoc;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.*;
+import org.jetbrains.annotations.NotNull;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MyDoctorsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class MyDoctorsFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class MyDoctorsFragment extends Fragment{
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public MyDoctorsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MyDoctorsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MyDoctorsFragment newInstance(String param1, String param2) {
-        MyDoctorsFragment fragment = new MyDoctorsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    private RecyclerView recyclerView;
+    private MyDocAdapter myDocAdapter;
+    private List<Doctor> mDoctors;
+    private List<Doctor> mDoctorNames;
+    private List<String> temp;
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View rootview = inflater.inflate(R.layout.fragment_mydoctors, container, false);
+        recyclerView = rootview.findViewById(R.id.DoctorRecycler);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mDoctors=new ArrayList<>();
+        mDoctorNames=new ArrayList<>();
+        temp = new ArrayList<>();
+        readDoctors();
+
+        int nightModeFlags = this.getActivity().getResources().getConfiguration().uiMode &
+                Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                ConstraintLayout layout = (ConstraintLayout)rootview.findViewById(R.id.layout);
+                // Resources layout =getResources();
+                //  layout.(R.drawable.backgrounddark);
+                layout.setBackgroundResource(R.drawable.backdark);
+                break;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+                ConstraintLayout layoutlight = (ConstraintLayout)rootview.findViewById(R.id.layout);
+                layoutlight.setBackgroundResource(R.drawable.back);
+                break;
+
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                ConstraintLayout layoutd = (ConstraintLayout)rootview.findViewById(R.id.layout);
+                // Resources layout =getResources();
+                //  layout.(R.drawable.backgrounddark);
+                layoutd.setBackgroundResource(R.drawable.backdark);
+                break;
         }
+        return rootview;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_doctors, container, false);
+    private void readDoctors() {
+        FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Users").child(firebaseUser.getUid()).child("Doctors");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                mDoctors.clear();
+                mDoctorNames.clear();
+                for(DataSnapshot snapshot1: snapshot.getChildren()){
+                    for(DataSnapshot snapshot2: snapshot1.getChildren())
+                    {
+                        String doctoruid = snapshot2.getKey();
+                        DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference().child("Users").child(doctoruid);
+                        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                for(DataSnapshot snapshot3: snapshot.getChildren())
+                                {
+                                    if(snapshot3.getKey().equals("Name"))
+                                    {
+                                       String docname = snapshot3.getValue().toString();
+                                        temp.add(docname);
+                                    }
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                            }
+                        });
+
+                        Doctor doctor= new Doctor(snapshot2.getValue(String.class), temp.toString());
+                      mDoctors.add(doctor);
+
+
+                       mDoctorNames.add(doctor);
+                    }
+                }
+
+                myDocAdapter = new MyDocAdapter(getContext(),mDoctors,mDoctorNames);
+                recyclerView.setAdapter(myDocAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
     }
 }

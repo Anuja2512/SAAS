@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PatientDashboard" android:id="@+id/layout">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".PatientDashboard" android:id="@+id/layout">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
-        android:elevation="4dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp" android:background="#2196F3"/>
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+            android:elevation="4dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp" android:background="#2196F3"/>
     <FrameLayout
-        android:id="@+id/fragment_container1"
-        android:layout_width="match_parent"
-        android:layout_height="616dp"
-        android:layout_below="@+id/toolbar"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp" android:layout_alignParentEnd="true" android:layout_marginEnd="0dp"
-        />
+            android:id="@+id/fragment_container1"
+            android:layout_width="match_parent"
+            android:layout_height="616dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp" android:layout_alignParentEnd="true" android:layout_marginEnd="0dp"
+    />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bottom_navigation"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/navigation_menu"
-        app:itemIconTint="#000000"
-        app:itemTextColor="#000000"
-        android:layout_marginBottom="0dp" android:layout_alignParentEnd="true" android:layout_marginEnd="0dp"
-        android:layout_alignParentStart="true" android:layout_marginStart="0dp" android:background="#2196F3"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottom_navigation"
+            android:layout_alignParentBottom="true"
+            app:menu="@menu/navigation_menu"
+            app:itemIconTint="#000000"
+            app:itemTextColor="#000000"
+            android:layout_marginBottom="0dp" android:layout_alignParentEnd="true" android:layout_marginEnd="0dp"
+            android:layout_alignParentStart="true" android:layout_marginStart="0dp" android:background="#2196F3"/>
 
 </RelativeLayout>

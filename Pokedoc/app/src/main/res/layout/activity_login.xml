@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".LoginActivity" android:background="@drawable/back" android:id="@+id/layout">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".LoginActivity" android:background="@drawable/back" android:id="@+id/layout">
 
     <ImageView
-        android:id="@+id/Llogo"
-        android:layout_width="135dp"
-        android:layout_height="101dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"/>
+            android:id="@+id/Llogo"
+            android:layout_width="135dp"
+            android:layout_height="101dp"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo"/>
 
     <EditText
         android:id="@+id/LemailTxt"
@@ -50,28 +50,34 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LGoogle" app:backgroundTint="#AB2196F3"/>
+        app:layout_constraintTop_toBottomOf="@+id/LGoogle" />
 
     <Button
-        android:id="@+id/ForgotPassBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            android:id="@+id/ForgotPassBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="8dp"
 
-        android:text="  Forgot Password?  "
-        android:background="@android:color/transparent"
-        app:layout_constraintTop_toTopOf="@+id/LoginBtn" android:layout_marginTop="68dp"
-        android:textColor="@color/colorPrimaryDark" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+            android:text="  Forgot Password?  "
+            app:layout_constraintEnd_toStartOf="@+id/newAccount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LoginBtn" android:background="@android:color/transparent"/>
+
     <Button
-        android:id="@+id/newAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            android:id="@+id/newAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="32dp"
 
-        android:text="  Create New Account  "
-        android:background="@android:color/transparent"
-        app:layout_constraintTop_toTopOf="@+id/LoginBtn" android:layout_marginTop="140dp"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+            android:text="  Create New Account  "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ForgotPassBtn"
+            app:layout_constraintTop_toBottomOf="@+id/LoginBtn" android:background="@android:color/transparent"/>
+
     <EditText
         android:id="@+id/LPasswordTxt"
         android:layout_width="wrap_content"
@@ -88,41 +94,40 @@
         app:layout_constraintTop_toBottomOf="@+id/LemailTxt" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginLeft="128dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="135dp"
-        android:layout_marginRight="135dp"
-        android:text="or"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LPasswordTxt"/>
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="128dp"
+            android:layout_marginLeft="128dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="135dp"
+            android:layout_marginRight="135dp"
+            android:text="or"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LPasswordTxt"/>
 
     <Button
-        android:id="@+id/LGoogle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="130dp"
-        android:background="@android:color/transparent"
-        android:drawableLeft="@drawable/google_icon"
-        android:text="Login With GOOGLE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" android:drawablePadding="15dp"
-        android:textColor="@color/colorPrimaryDark"/>
+            android:id="@+id/LGoogle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="108dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="130dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/google_icon"
+            android:text="Login With GOOGLE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" android:drawablePadding="15dp"/>
     <TextView
-        android:text="Change Role"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:id="@+id/textView6"
-        android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/newAccount" app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-        android:textSize="20sp" app:layout_constraintVertical_bias="0.429"/>
+            android:text="Change Role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView6"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@+id/newAccount" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:textSize="20sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

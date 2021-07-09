@@ -2,10 +2,10 @@ package com.example.pokedoc;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Bundle;
 import android.os.Handler;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class MainActivity extends AppCompatActivity {

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent" android:id="@+id/layout">
+
+
+    <TextView
+        android:id="@+id/textHello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/amaranth_bold"
+        android:text="Hello"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="15dp"
+
+        android:fontFamily="@font/amaranth_bold"
+        android:text="Sayali"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/textHello"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+            android:layout_width="305dp"
+            android:layout_height="40dp"
+            android:background="@drawable/white_rectangle_background"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayout" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView5"
+            android:layout_marginTop="16dp">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:fontFamily="@font/amaranth_italic"
+            android:hint="@string/search_elements"
+            android:imeOptions="actionSearch"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp" />
+
+        <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/search_icon_background"
+                android:contentDescription="@string/app_name"
+                android:padding="6dp"
+                app:srcCompat="@drawable/ic_baseline_search_24"
+                app:tint="@color/colorPrimaryDark"/>
+
+    </LinearLayout>
+
+    <ScrollView
+            android:layout_width="403dp"
+            android:layout_height="385dp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" android:layout_marginTop="116dp"
+    >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                    android:id="@+id/layoutBreakfast"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:background="@drawable/white_rectangle_background"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="15dp"
+                    android:layout_marginLeft="30dp"
+                    app:layout_constraintDimensionRatio="H, 1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                        android:layout_width="103dp"
+                        android:layout_height="86dp"
+                        android:layout_margin="8dp"
+                        android:contentDescription="@string/app_name"
+                        android:padding="8dp"
+                        android:src="@drawable/breakfasttt"
+                        app:srcCompat="@drawable/breakfasttt"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amaranth_bold"
+                    android:gravity="center"
+                    android:text="@string/breakfast"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/layoutLunch"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:background="@drawable/white_rectangle_background"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="15dp"
+                    android:layout_marginRight="30dp"
+                    app:layout_constraintDimensionRatio="H, 1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                        android:layout_width="111dp"
+                        android:layout_height="88dp"
+                        android:layout_margin="8dp"
+                        android:contentDescription="@string/app_name"
+                        android:padding="8dp"
+                        android:src="@drawable/lunchh"
+                        app:srcCompat="@drawable/lunchh"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amaranth_bold"
+                    android:gravity="center"
+                    android:text="@string/lunch"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:id="@+id/layoutDinner"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_rectangle_background"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="15dp"
+                    app:layout_constraintDimensionRatio="H, 1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutBreakfast" android:layout_marginTop="12dp"
+                    android:layout_marginStart="28dp">
+
+                <ImageView
+                        android:layout_width="107dp"
+                        android:layout_height="88dp"
+                        android:layout_margin="8dp"
+                        android:contentDescription="@string/app_name"
+                        android:padding="8dp"
+                        android:src="@drawable/dinerr"
+                        app:srcCompat="@drawable/dinerr"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amaranth_bold"
+                    android:gravity="center"
+                    android:text="@string/dinner"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+            <LinearLayout
+                    android:id="@+id/layoutBeverage"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_rectangle_background"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="15dp"
+                    app:layout_constraintDimensionRatio="H, 1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutLunch" android:layout_marginTop="12dp"
+                    android:layout_marginEnd="28dp">
+
+                <ImageView
+                        android:layout_width="115dp"
+                        android:layout_height="89dp"
+                        android:layout_margin="8dp"
+                        android:contentDescription="@string/app_name"
+                        android:padding="8dp"
+                        android:src="@drawable/beverages"
+                        app:srcCompat="@drawable/beverages"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amaranth_bold"
+                    android:gravity="center"
+                    android:text="@string/beverage"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

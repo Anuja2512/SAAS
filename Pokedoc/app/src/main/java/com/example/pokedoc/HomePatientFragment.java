@@ -1,63 +1,79 @@
 package com.example.pokedoc;
 
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.*;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomePatientFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class HomePatientFragment extends Fragment {
+public class HomePatientFragment extends Fragment{
+    String uid, name;
+    TextView nametxt;
+    FirebaseAuth mAuth;
+    FirebaseUser user;
+    DatabaseReference usersReference;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public HomePatientFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomePatientFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomePatientFragment newInstance(String param1, String param2) {
-        HomePatientFragment fragment = new HomePatientFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View rootview = inflater.inflate(R.layout.fragment_pat_home, container, false);
+        mAuth=FirebaseAuth.getInstance();
+        user=mAuth.getCurrentUser();
+        Intent intent = getActivity().getIntent();
+        uid = intent.getStringExtra("uid");
+        int nightModeFlags = this.getActivity().getResources().getConfiguration().uiMode &
+                Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                ConstraintLayout layout = (ConstraintLayout)rootview.findViewById(R.id.layout);
+                // Resources layout =getResources();
+                //  layout.(R.drawable.backgrounddark);
+                layout.setBackgroundResource(R.drawable.backdark);
+                break;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+                ConstraintLayout layoutlight = (ConstraintLayout)rootview.findViewById(R.id.layout);
+                layoutlight.setBackgroundResource(R.drawable.back);
+                break;
+
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                ConstraintLayout layoutd = (ConstraintLayout)rootview.findViewById(R.id.layout);
+                // Resources layout =getResources();
+                //  layout.(R.drawable.backgrounddark);
+                layoutd.setBackgroundResource(R.drawable.backdark);
+                break;
         }
-    }
+        nametxt=rootview.findViewById(R.id.textView5);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_patient, container, false);
+        usersReference= FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
+        usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                if(snapshot.exists()) {
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                        if (snapshot1.getKey().toString().equals("Name")) {
+                            name = snapshot1.getValue().toString();
+                            nametxt.setText(name);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return rootview;
     }
 }
