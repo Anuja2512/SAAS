@@ -41,7 +41,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:20.0.0'
     implementation platform('com.google.firebase:firebase-bom:28.1.0')
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.5.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

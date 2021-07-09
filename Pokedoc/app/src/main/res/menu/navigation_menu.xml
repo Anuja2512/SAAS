@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menuHome"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home"/>
+
+    <item android:id="@+id/menuFavourite"
+        android:icon="@drawable/doctor"
+        android:title="My Doctors"/>
+
+    <item android:id="@+id/menuAccount"
+        android:icon="?attr/actionModePasteDrawable"
+        android:title="Prescriptions"/>
+
+    <item android:title="My Reports"
+        android:id="@+id/myreports" android:icon="?android:attr/actionModeFindDrawable"/>
+    <item android:id="@+id/menuSettings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="@string/settings"/>
+
+
+</menu>

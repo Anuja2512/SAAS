@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pokedoc">
-        <activity android:name=".PatientDashboard"></activity>
+        <activity android:name=".ViewReportsDoctor"></activity>
+        <activity android:name=".PatientOverview" />
+        <activity android:name=".AddPatientActivity" />
+        <activity android:name=".PatientDashboard" />
         <activity android:name=".DoctorDashboard" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />

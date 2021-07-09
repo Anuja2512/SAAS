@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">Pokedoc</string>
+    <string name="app_name">PokeDoc</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="search_elements">Search Elements</string>
+    <string name="breakfast">BreakFast</string>
+    <string name="lunch">Lunch</string>
+    <string name="dinner">Dinner</string>
+    <string name="beverage">Beverage</string>
+    <string name="home">Home</string>
+    <string name="favourite">Favourite</string>
+    <string name="account">Account</string>
+    <string name="settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
