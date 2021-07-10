@@ -63,6 +63,7 @@
                 app:backgroundTint="@android:color/transparent" android:textColor="#2196F3"
                 android:textSize="14sp" app:icon="@android:drawable/ic_menu_add"
                 app:iconTint="#2196F3" app:iconSize="25dp"
+                android:fontFamily="@font/amaranth_bold"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
         <TextView

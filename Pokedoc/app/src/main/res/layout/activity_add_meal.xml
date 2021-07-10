@@ -167,6 +167,7 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="96dp"
             android:padding="12dp"
             android:hint="Select Meal Item"
+            android:fontFamily="@font/amaranthh"
             android:gravity="center_vertical"
             android:drawableEnd="@drawable/ic_dropdown"
             android:background="@android:drawable/editbox_background"
@@ -174,6 +175,7 @@
     <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="@font/amaranthh"
             app:layout_constraintTop_toBottomOf="@+id/editTextNumber" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="20dp" app:layout_constraintHorizontal_bias="0.498" android:background="#03A9F4"
             app:backgroundTint="#2196F3" android:id="@+id/button12" android:text="ADD" android:textColor="#FFFFFF"/>
@@ -183,6 +185,7 @@
             android:inputType="number"
             android:ems="10"
             android:id="@+id/editTextNumber"
+            android:fontFamily="@font/amaranthh"
             app:layout_constraintTop_toBottomOf="@+id/textView30" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:background="@android:drawable/editbox_background"
             android:layout_marginTop="12dp" app:layout_constraintHorizontal_bias="0.497"
@@ -191,6 +194,7 @@
             android:text="HELP?"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textView16"
+            android:fontFamily="@font/amaranthh"
             app:layout_constraintStart_toEndOf="@+id/editTextNumber" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView30" android:layout_marginTop="32dp"
             app:layout_constraintHorizontal_bias="0.313"/>

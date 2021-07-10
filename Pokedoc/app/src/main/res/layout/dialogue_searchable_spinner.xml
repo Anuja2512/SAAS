@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:text="Select Meal Item"
             android:textSize="20sp"
+            android:fontFamily="@font/amaranthh"
 
     />
 
@@ -33,7 +34,8 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="3dp"/>
+                android:layout_marginRight="3dp"
+                android:fontFamily="@font/amaranthh"/>
 
     <ListView
             android:layout_width="match_parent"

@@ -58,6 +58,7 @@
             android:layout_height="wrap_content"
 
             android:text="  Forgot Password?  "
+            android:fontFamily="@font/amaranthh"
             android:background="@android:color/transparent"
             app:layout_constraintTop_toTopOf="@+id/LoginBtn" android:layout_marginTop="68dp"
             android:textColor="@color/colorPrimaryDark" app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +67,7 @@
             android:id="@+id/newAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:fontFamily="@font/amaranthh"
             android:text="  Create New Account  "
             android:background="@android:color/transparent"
             app:layout_constraintTop_toTopOf="@+id/LoginBtn" android:layout_marginTop="140dp"

@@ -6,7 +6,6 @@ import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -25,11 +24,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public static final int MSG_TYPE_RIGHT=1;
     public String username;
     private List<Chat> messages;
+    Boolean aBoolean;
     FirebaseUser fUser;
     public MessageAdapter(Context context,List <Chat> messages){
         this.context=context;
         this.messages=messages;
     }
+
     @NonNull
     @Override
     public MessageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -42,21 +43,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             return new MessageAdapter.ViewHolder(view);
         }
     }
-
-    private void makeOwn(MessageAdapter.ViewHolder holder) {
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
-                holder.itemView.getLayoutParams();
-        params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-        holder.itemView.setLayoutParams(params);
-    }
-    private void makeOpponent(MessageAdapter.ViewHolder holder) {
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
-                holder.itemView.getLayoutParams();
-        params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        holder.itemView.setLayoutParams(params);
-
-    }
-    /*@Override
+    @Override
     public int getItemViewType(int position){
         fUser= FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -86,7 +73,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
     }
 
-*/
+
 
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
@@ -99,6 +86,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public int getItemCount() {
         return messages.size();
     }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         static public TextView show_message;

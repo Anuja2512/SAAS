@@ -12,6 +12,7 @@
             android:textSize="18sp"
             android:id="@+id/show_message"
             android:padding="8dp"
+            android:fontFamily="@font/amaranthh"
         android:background="@drawable/message_left">
     </TextView>
 

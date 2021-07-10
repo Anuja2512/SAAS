@@ -11,6 +11,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select Meal Item"
+            android:fontFamily="@font/amaranthh"
             android:textSize="20sp"
 
             android:layout_marginBottom="10dp"/>
@@ -23,6 +24,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/edit_text"
                 android:hint="Search..."
+                android:fontFamily="@font/amaranthh"
                 android:layout_marginLeft="10dp"
                 android:background="@android:drawable/editbox_background_normal"/>
         <ImageView

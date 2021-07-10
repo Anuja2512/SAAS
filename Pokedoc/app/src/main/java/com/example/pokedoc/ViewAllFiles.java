@@ -12,20 +12,26 @@ import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 import com.google.firebase.database.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ViewAllFiles extends AppCompatActivity {
 
     ListView myPDFListView;
     TextView mytext;
+    SwipeRefreshLayout refreshing;
     DatabaseReference databaseReference;
     List<UploadFiless> uploadFile;
+    ListView myList;
+
     HashMap<String, String > map;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +61,22 @@ public class ViewAllFiles extends AppCompatActivity {
         }
 
         myPDFListView=(ListView)findViewById(R.id.myListView);
+        refreshing=findViewById(R.id.reportRefresh);
+        myList = findViewById(R.id.myListView);
+
         uploadFile=new ArrayList<>();
 
         viewAllFiles();
+
+        refreshing.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+
+                refreshing.setRefreshing(false);
+            }
+        });
+
         myPDFListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -104,7 +123,7 @@ public class ViewAllFiles extends AppCompatActivity {
                        uploadFile.add(uploadFiles);
                     }
 
-                    String[] uploads=new String[uploadFile.size()];
+                    final String[] uploads=new String[uploadFile.size()];
 
                     for(int i=0; i< uploads.length;i++){
                         uploads[i]=uploadFile.get(i).getName();
@@ -129,15 +148,36 @@ public class ViewAllFiles extends AppCompatActivity {
                                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Reports");
                                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
-                                    public void onDataChange(@NonNull @org.jetbrains.annotations.NotNull DataSnapshot snapshot) {
+                                    public void onDataChange(@NonNull  DataSnapshot snapshot) {
                                         for(DataSnapshot snapshot1: snapshot.getChildren())
                                         {
-                                            
+                                            String hash = snapshot1.getKey();
+                                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Reports").child(hash);
+                                            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                    for (DataSnapshot snapshot2: snapshot.getChildren())
+                                                    {
+                                                        if(snapshot2.getKey().equals("name")&&snapshot2.getValue().toString().equals(uploads[position]))
+                                                        {
+                                                            reference.removeValue();
+                                                            finish();
+
+                                                        }
+                                                    }
+                                                    
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                                }
+                                            });
                                         }
                                     }
 
                                     @Override
-                                    public void onCancelled(@NonNull @org.jetbrains.annotations.NotNull DatabaseError error) {
+                                    public void onCancelled(@NonNull DatabaseError error) {
 
                                     }
                                 });
