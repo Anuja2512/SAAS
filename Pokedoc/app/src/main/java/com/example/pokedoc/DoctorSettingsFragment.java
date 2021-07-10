@@ -79,7 +79,7 @@ public class DoctorSettingsFragment extends Fragment{
                         docemail.setText("Email Id : "+snap.getValue().toString());
                     }
                     if (snap.getKey().equals("Age")) {
-                        docAge.setText("Email Id : "+snap.getValue().toString());
+                        docAge.setText("Age : "+snap.getValue().toString());
                     }
 
                     if (snap.getKey().equals("Patients")) {

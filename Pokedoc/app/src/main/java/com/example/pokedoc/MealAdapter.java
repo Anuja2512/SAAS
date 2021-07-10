@@ -31,12 +31,14 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder> {
 
     private List<String> foodName;
     private List<String> foodQty;
+    private List<String> hashList;
     private LayoutInflater layoutInflater;
     FirebaseAuth mAuth;
 
-    public MealAdapter(Context context, List<String> foodName, List<String> foodQty){
+    public MealAdapter(Context context, List<String> foodName, List<String> foodQty, List<String> hashList){
         this.foodName=foodName;
         this.foodQty=foodQty;
+        this.hashList = hashList;
         this.layoutInflater=LayoutInflater.from(context);
     }
 
@@ -51,6 +53,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         String foodList = foodName.get(position);
+        String hash= hashList.get(position);
         ViewHolder.txtName.setText(foodList);
         String amtList = foodQty.get(position);
         ViewHolder.txtQty.setText(amtList);
@@ -65,39 +68,42 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder> {
                 dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        final String[] hash = {""};
-                        final DatabaseReference[] ref = {null};
-                        DatabaseReference deUsers = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Nutrition").child(date);
-                        deUsers.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                for(DataSnapshot snapshot1: snapshot.getChildren())
-                                {
-                                    hash[0] =snapshot1.getKey();
-                                    for (DataSnapshot snapshot2: snapshot1.getChildren())
-                                    {
-                                        if(snapshot2.getKey().equals("Food Item"))
-                                        {
-                                            if(snapshot2.getValue(String.class).equals(foodList));
+//                        final String[] hash = {""};
+//                        final DatabaseReference[] ref = {null};
+                        DatabaseReference deUsers = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Nutrition").child(date).child(hash);
+//                        deUsers.addListenerForSingleValueEvent(new ValueEventListener() {
+//                            @Override
+//                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+//                                for(DataSnapshot snapshot1: snapshot.getChildren())
+//                                {
+//                                    hash[0] =snapshot1.getKey();
+//                                    for (DataSnapshot snapshot2: snapshot1.getChildren())
+//                                    {
+//                                        if(snapshot2.getKey().equals("Food Item"))
+//                                        {
+//                                            if(snapshot2.getValue(String.class).equals(foodList));
+//
+//                                            {
+//                                                String reqhash = hash[0];
+//                                                Toast.makeText(view.getContext(), reqhash, Toast.LENGTH_SHORT).show();
+//                                                ref[0] =snapshot1.getRef();
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+//
+//                            }
+//                        });
 
-                                            {
-                                                String reqhash = hash[0];
-                                                Toast.makeText(view.getContext(), reqhash, Toast.LENGTH_SHORT).show();
-                                                ref[0] =snapshot1.getRef();
-                                            }
-                                        }
-                                    }
-                                }
-                            }
 
-                            @Override
-                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-                            }
-                        });
-
-
-                          //  notifyItemRemoved(position);
+                        foodName.remove(position);
+                        foodQty.remove(position);
+                          deUsers.removeValue();
+                          notifyItemRemoved(position);
                     }
                 });
                 dialog.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
