@@ -36,8 +36,8 @@ public class PrescriptionPatient extends AppCompatActivity {
     Button settime, setreminder, delete;
     FloatingActionButton addreminder;
     public static String myuid, docuid, med, dosage,description, docusename;
-    TextView medtext, desctext, dosagetext, docusernameext, remindertext;
-    String desc, reminder, hash;
+    TextView medtext, desctext, dosagetext, docusernameext, remindertext,datetext;
+    String desc, reminder, hash, date;
     CharSequence name;
     AlertDialog.Builder builder;
     private PendingIntent pendingIntent;
@@ -76,11 +76,14 @@ public class PrescriptionPatient extends AppCompatActivity {
         myuid=FirebaseAuth.getInstance().getCurrentUser().getUid();
         docuid=getIntent().getStringExtra("uid");
         med=getIntent().getStringExtra("med");
+        date=getIntent().getStringExtra("date");
         dosage=getIntent().getStringExtra("dosage");
         description=getIntent().getStringExtra("desc");
         docusename=getIntent().getStringExtra("docusername");
         reminder=getIntent().getStringExtra("reminder");
         hash=getIntent().getStringExtra("hash");
+        datetext=findViewById(R.id.dateee);
+        datetext.setText("Date: "+date);
         docusernameext=findViewById(R.id.textView29);
         remindertext=findViewById(R.id.textView32);
         medtext=findViewById(R.id.textView26);
@@ -97,34 +100,29 @@ public class PrescriptionPatient extends AppCompatActivity {
             public void onClick(View view) {
                 if (reminder.equals("Set")) {
                     builder = new AlertDialog.Builder(PrescriptionPatient.this);
-                    builder.setTitle("Alert");
 
                     //Setting message manually and performing action on button click
                     builder.setMessage("Do you wish to cancel the reminder ?\n\n")
+                            .setTitle("Alert")
                             .setCancelable(false)
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                   ref= FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Prescriptions");
+                                   ref= FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Prescriptions").child(docuid).child(hash);
                                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
                                        @Override
                                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                            for(DataSnapshot snapshot1: snapshot.getChildren())
                                            {
-                                               for(DataSnapshot snapshot2: snapshot1.getChildren())
-                                               {
-                                                   if(snapshot2.getKey().equals(hash))
+                                              // Toast.makeText(PrescriptionPatient.this, snapshot1.getKey(), Toast.LENGTH_SHORT).show();
+                                                   if(snapshot1.getKey().equals("Reminder"))
                                                    {
-                                                       for(DataSnapshot snapshot3: snapshot2.getChildren())
-                                                       {
-                                                           if(snapshot3.getKey().equals("Reminder"))
-                                                           {
-                                                               DatabaseReference ref = snapshot3.getRef();
-                                                               ref.setValue("Not Set");
-                                                           }
-                                                       }
+                                                       DatabaseReference ref = snapshot1.getRef();
+                                                       ref.setValue("Not Set");
+                                                       Intent tohome = new Intent(PrescriptionPatient.this, PatientDashboard.class);
+                                                       startActivity(tohome);
+                                                       finish();
+                                                     //  Toast.makeText(PrescriptionPatient.this, ref.toString(), Toast.LENGTH_SHORT).show();
                                                    }
-                                               }
-
 
                                            }
                                        }
@@ -135,7 +133,6 @@ public class PrescriptionPatient extends AppCompatActivity {
                                        }
                                    });
                                     cancelAlarm();
-                                    finish();
                                 }
                             })
                             .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -189,26 +186,23 @@ public class PrescriptionPatient extends AppCompatActivity {
                         calendar.set(Calendar.MILLISECOND,0);
                         creatNotificationChannel();
                         setAlarm();
-                        ref= FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Prescriptions");
+                        DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Prescriptions").child(docuid).child(hash);
                         ref.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                 for(DataSnapshot snapshot1: snapshot.getChildren())
                                 {
-                                    for(DataSnapshot snapshot2: snapshot1.getChildren())
+                                   // Toast.makeText(PrescriptionPatient.this, snapshot1.getKey(), Toast.LENGTH_SHORT).show();
+
+                                    if(snapshot1.getKey().equals("Reminder"))
                                     {
-                                        if(snapshot2.getKey().equals(hash))
-                                        {
-                                            for(DataSnapshot snapshot3: snapshot2.getChildren())
-                                            {
-                                                if(snapshot3.getKey().equals("Reminder"))
-                                                {
-                                                    DatabaseReference ref = snapshot3.getRef();
-                                                    ref.setValue("Set");
-                                                }
-                                            }
-                                        }
+                                        DatabaseReference ref = snapshot1.getRef();
+                                        ref.setValue("Set");
+                                        Intent tohome = new Intent(PrescriptionPatient.this, PatientDashboard.class);
+                                        startActivity(tohome);
+                                        finish();
                                     }
+
 
 
                                 }
@@ -219,7 +213,7 @@ public class PrescriptionPatient extends AppCompatActivity {
 
                             }
                         });
-                        finish();
+
                     }
                 });
 

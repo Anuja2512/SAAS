@@ -8,22 +8,100 @@
         tools:context=".PatientOverview" android:id="@+id/layout"
     android:background="@drawable/back">
 
-    <ScrollView
-            android:layout_width="339dp"
-            android:layout_height="556dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:orientation="vertical">
 
+    <ScrollView
+            android:layout_width="419dp"
+            android:layout_height="736dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical" android:layout_margin="10dp">
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:padding="5dp" app:cardCornerRadius="20dp">
+
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <ImageView
+                            android:layout_width="126dp"
+                            android:layout_height="match_parent" app:srcCompat="@drawable/ic_baseline_account_circle_24"
+                            android:id="@+id/imageView3" android:padding="10dp"/>
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="0dp" android:layout_marginTop="20dp"
+                                android:layout_alignParentTop="true" android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="0dp" android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="0dp"/>
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="0dp" android:layout_marginTop="20dp"
+                                android:layout_alignParentTop="true" android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="0dp" android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="0dp"/>
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="0dp" android:layout_marginTop="20dp"
+                                android:layout_alignParentTop="true" android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="0dp" android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="0dp"/>
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="0dp" android:layout_marginTop="20dp"
+                                android:layout_alignParentTop="true" android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="0dp" android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="0dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <com.anychart.AnyChartView
+                    android:id="@+id/any_chart_view"
+                    android:layout_height="wrap_content" android:layout_width="wrap_content"
+
+                    android:layout_marginTop="28dp"
+                    android:background="@android:color/transparent" app:layout_constraintHorizontal_bias="0.494"
+                    android:layout_gravity="center">
+            </com.anychart.AnyChartView>
             <Button
-                android:id="@+id/button6"
-                android:layout_width="184dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/amaranth_bold"
-                android:gravity="center|clip_vertical|center_horizontal|center_vertical"
-                android:text="Prescriptions" />
+                    android:text="View Prescriptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/button6" android:background="#2196F3"
+                    app:backgroundTint="#2196F3" android:layout_marginTop="20dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp" android:layout_marginBottom="10dp"
+                    app:icon="?attr/actionModePasteDrawable"/>
+            <Button
+                    android:text="View Reports"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/button11" android:background="#2196F3"
+                    app:backgroundTint="#2196F3"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp" android:layout_marginTop="10dp" app:iconTint="#FFFFFF"
+                    app:icon="?android:attr/actionModeFindDrawable"/>
         </LinearLayout>
+
     </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true" app:srcCompat="@android:drawable/ic_menu_delete"
+            android:id="@+id/floatingActionButton2"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="12dp"
+            app:layout_constraintHorizontal_bias="0.542"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

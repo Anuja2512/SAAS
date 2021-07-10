@@ -7,14 +7,14 @@
         android:padding="5dp"
         android:background="@drawable/back"
         android:layout_height="match_parent"
-        tools:context=".ChatActivity">
+        tools:context=".ChatActivity" android:id="@+id/layout">
 
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:id="@+id/chat_recycler_view"
             android:layout_above="@id/bottom"
             android:layout_height="match_parent"/>
-    
+
     <RelativeLayout android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
@@ -24,14 +24,14 @@
     >
 
         <EditText
-            android:id="@+id/text_send"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@id/btn_send"
-            android:background="@android:color/transparent"
-            android:fontFamily="@font/amaranth_italic"
-            android:hint="Type a message..." />
+                android:id="@+id/text_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/btn_send"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/amaranth_italic"
+                android:hint="Type a message..."/>
 
         <ImageButton android:layout_width="40dp"
                      android:layout_height="40dp"
@@ -40,7 +40,6 @@
                      android:layout_alignParentEnd="true"
         />
     </RelativeLayout>
-
 
 
 </RelativeLayout>

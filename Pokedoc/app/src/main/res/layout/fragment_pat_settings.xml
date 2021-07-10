@@ -1,14 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent" android:id="@+id/layout">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layoutpat">
+
+    <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.988"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/help"
+            app:srcCompat="@drawable/help"/>
 
     <TextView
-            android:text="patProfile"
+            android:id="@+id/textView10"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView20"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/amaranth_bold"
+            android:text="Settings "
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <ScrollView
+            android:id="@+id/scrollView9"
+            android:layout_width="415dp"
+            android:layout_height="443dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" app:layout_constraintHorizontal_bias="0.666">
+
+        <LinearLayout
+                android:id="@+id/linearlayoutpat1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:id="@+id/linearlayoutpat2"
+                    android:layout_width="match_parent"
+                    android:layout_height="557dp"
+                    android:layout_marginTop="40dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:id="@+id/patientUsernametext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="80dp"
+                        android:layout_marginTop="32dp"
+                        android:fontFamily="@font/amaranth_bold"
+                        android:text="Username"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxCollapsedPaddingTop="2dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/patientUname"
+                            android:layout_width="288dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="70dp"
+                            android:fontFamily="@font/amaranth_italic"
+                            android:padding="15dp"
+                            android:paddingTop="15dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                        android:id="@+id/patientNametext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="80dp"
+                        android:layout_marginTop="32dp"
+                        android:fontFamily="@font/amaranth_bold"
+                        android:text="Name"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxCollapsedPaddingTop="2dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/patientName"
+                            android:layout_width="283dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="70dp"
+                            android:fontFamily="@font/amaranth_italic"
+                            android:padding="15dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                        android:id="@+id/patientPhntext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginTop="40dp"
+                        android:fontFamily="@font/amaranth_bold"
+                        android:text="Phone No"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxCollapsedPaddingTop="2dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/patientPhn"
+                            android:layout_width="283dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="70dp"
+                            android:fontFamily="@font/amaranth_italic"
+                            android:padding="15dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                        android:id="@+id/patientGendertext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="80dp"
+                        android:layout_marginTop="36dp"
+                        android:fontFamily="@font/amaranth_bold"
+                        android:text="Gender"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxCollapsedPaddingTop="2dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/patientGender"
+                            android:layout_width="283dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="70dp"
+                            android:fontFamily="@font/amaranth_italic"
+                            android:padding="15dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                        android:id="@+id/patemail"
+                        android:layout_width="333dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="70dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Email Id"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        android:id="@+id/pateAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="70dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Age :"
+                        android:textStyle="bold" />
+
+                <TextView
+                        android:id="@+id/no_of_doctors"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="80dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="28dp"
+                        android:text="No of Doctors :"
+                        android:textStyle="bold" />
+                <!--<com.google.android.material.textfield.TextInputLayout
+                android:layout_width="398dp"
+                android:layout_height="35dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="283dp"
+                    android:layout_height="44dp"
+                    android:hint="hint" android:layout_marginLeft="70dp"/>
+        </com.google.android.material.textfield.TextInputLayout>-->
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <Button
+            android:id="@+id/updatePatacc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/amaranth_bold"
+            android:text="Apply changes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView9" android:background="#2196F3"
+            app:backgroundTint="#2196F3" android:layout_marginTop="20dp"/>
+    <Button
+            android:id="@+id/deletePatacc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/amaranth_bold"
+            android:text="Delete Account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView9" android:layout_marginTop="20dp"
+            android:background="#2196F3" app:backgroundTint="#2196F3"/>
+    <Button
+            android:text="Logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/button9"
+            android:background="@android:color/transparent"
+            android:textColor="#2196F3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/updatePatacc"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

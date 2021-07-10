@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:padding="16dp"
+              android:background="@android:color/white">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Meal Item"
+            android:textSize="20sp"
+
+            android:layout_marginBottom="10dp"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="312dp"
+            android:layout_height="46dp">
+        <EditText
+                android:layout_width="240dp"
+                android:layout_height="match_parent"
+                android:id="@+id/edit_text"
+                android:hint="Search..."
+                android:layout_marginLeft="10dp"
+                android:background="@android:drawable/editbox_background_normal"/>
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                app:srcCompat="?android:attr/actionModeWebSearchDrawable"
+                android:id="@+id/imageView6" android:layout_weight="1"
+                tools:targetApi="lollipop" android:layout_gravity="center_vertical" android:padding="5dp"/>
+    </LinearLayout><![CDATA[
+
+
+
+            android:layout_height=
+            android:id=@+id/listview"/>
+
+
+]]>
+    <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listview"/>
+</LinearLayout>

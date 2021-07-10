@@ -2,6 +2,7 @@ package com.example.pokedoc;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -77,17 +78,20 @@ public class AddPrescription extends AppCompatActivity {
                                     layout.setOrientation(LinearLayout.VERTICAL);
                                     LinearLayout emptylayout = new LinearLayout(getApplicationContext());
                                     emptylayout.setOrientation(LinearLayout.VERTICAL);
-                                    emptylayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 30));
+                                    emptylayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 60));
                                     TextView medtext = new TextView(getApplicationContext());
                                     TextView dosetext = new TextView(getApplicationContext());
                                     TextView desctext = new TextView(getApplicationContext());
                                     TextView doctext = new TextView(getApplicationContext());
                                     TextView pattext = new TextView(getApplicationContext());
+                                    TextView datetext = new TextView(getApplicationContext());
                                     mainlayout.addView(layout);
                                     layout.addView(pattext);
                                     layout.addView(medtext);
                                     layout.addView(dosetext);
                                     layout.addView(desctext);
+                                    layout.addView(datetext);
+                                    layout.addView(emptylayout);
                                     for(DataSnapshot snapshot3: snapshot2.getChildren())
                                     {
 
@@ -96,23 +100,33 @@ public class AddPrescription extends AppCompatActivity {
                                                 if(snapshot3.getKey().equals("Medicine"))
                                                 {
                                                     medtext.setText("Medicine " +snapshot3.getValue(String.class));
+                                                    medtext.setTextColor(Color.parseColor("#03A9F4"));
                                                 }
                                                 if(snapshot3.getKey().equals("Dosage"))
                                                 {
                                                     dosetext.setText("Dosage "+snapshot3.getValue(String.class));
+                                                    dosetext.setTextColor(Color.parseColor("#03A9F4"));
                                                 }
                                                 if(snapshot3.getKey().equals("Description"))
                                                 {
                                                     desctext.setText("Description "+snapshot3.getValue(String.class));
+                                                    desctext.setTextColor(Color.parseColor("#03A9F4"));
                                                 }
                                                 if(snapshot3.getKey().equals("Doctor"))
                                                 {
                                                     doctext.setText("Doctor "+ snapshot3.getValue(String.class));
+                                                    doctext.setTextColor(Color.parseColor("#03A9F4"));
                                                 }
                                                 if(snapshot3.getKey().equals("Patient"))
                                                 {
                                                     pattext.setText("Patient "+snapshot3.getValue(String.class));
+                                                    pattext.setTextColor(Color.parseColor("#03A9F4"));
                                                 }
+                                               if(snapshot3.getKey().equals("Date"))
+                                               {
+                                                   datetext.setText("Date:  "+snapshot3.getValue(String.class));
+                                                   datetext.setTextColor(Color.parseColor("#03A9F4"));
+                                               }
 
                                            }
 

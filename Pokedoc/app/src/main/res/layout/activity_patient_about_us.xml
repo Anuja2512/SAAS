@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layout"
+        android:background="@drawable/back">
+
+    <RelativeLayout
+            android:id="@+id/layoutHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/header_background"
+            android:padding="10dp">
+
+
+        <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amaranth_bold"
+                android:text="About Us"
+                android:textColor="#FFFFFF"
+                android:textSize="40dp"
+                android:layout_gravity="center"
+        />
+
+        <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/amaranthh"
+                android:text="We 'SAAS' Team working on project based on Android since last month. "
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
+
+
+    </RelativeLayout>
+
+
+    <ScrollView
+            android:id="@+id/scrollView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginTop="130dp">
+
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/textback"
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="#0000ffff" />
+
+
+                <ImageView
+                        android:id="@+id/patientid"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/swarangi_circle" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/amaranthh"
+                        android:text="Swarangi Patil"
+                        android:textColor="#000000"
+                        android:textSize="25dp" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="40dp"
+                        android:fontFamily="@font/amaranth_italic"
+                        android:text="Cloud Enthusiast, Android developer"
+                        android:textColor="#000000"
+                        android:textSize="15dp"/>
+
+
+                <ImageView
+                        android:id="@+id/linkedinswar"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/linkedin" />
+
+                <ImageView
+                        android:id="@+id/twitterswar"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="180dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/twitter" />
+
+                <ImageView
+                        android:id="@+id/githubswar"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="240dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/github" />
+
+                <ImageView
+                        android:id="@+id/youtubeSwar"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="300dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/youtube" />
+
+                <View
+                        android:layout_width="350dp"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="140dp"
+                        android:background="#E91E63" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="#0000ffff" />
+
+                <ImageView
+                        android:id="@+id/nutritionid"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/anuja_circle" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/amaranthh"
+                        android:text="Anuja Jadhav"
+                        android:textColor="#000000"
+                        android:textSize="25dp" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="40dp"
+                        android:fontFamily="@font/amaranth_italic"
+                        android:text="Flutter and Android Developer"
+                        android:textColor="#000000"
+                        android:textSize="15dp"/>
+
+                <ImageView
+                        android:id="@+id/linkedinanuj"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/linkedin" />
+
+                <ImageView
+                        android:id="@+id/twitterAnuj"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="180dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/twitter" />
+
+                <ImageView
+                        android:id="@+id/githubAnuj"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="240dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/github" />
+
+                <ImageView
+                        android:id="@+id/youtubeAnuj"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="300dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/youtube" />
+
+                <View
+                        android:layout_width="350dp"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="140dp"
+                        android:background="#E91E63" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="#0000ffff" />
+
+                <ImageView
+                        android:id="@+id/prescriptionid"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/sayali_circle" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/amaranthh"
+                        android:text="Sayali Desai"
+                        android:textColor="#000000"
+                        android:textSize="25dp" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="40dp"
+                        android:fontFamily="@font/amaranth_italic"
+                        android:text="Programmer, Android Developer"
+                        android:textColor="#000000"
+                        android:textSize="15dp"/>
+
+                <ImageView
+                        android:id="@+id/linkedinsay"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/linkedin" />
+
+                <ImageView
+                        android:id="@+id/twittersay"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="180dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/twitter" />
+
+                <ImageView
+                        android:id="@+id/githubsay"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="240dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/github" />
+
+                <ImageView
+                        android:id="@+id/youtubesay"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="300dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/youtube" />
+
+                <View
+                        android:layout_width="350dp"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="140dp"
+                        android:background="#E91E63" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="#0000ffff" />
+
+                <ImageView
+                        android:id="@+id/reportsid"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/aniket_circle" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/amaranthh"
+                        android:text="Aniket Sable"
+                        android:textColor="#000000"
+                        android:textSize="25dp" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="40dp"
+                        android:fontFamily="@font/amaranth_italic"
+                        android:text="Web Developer, Android Developer"
+                        android:textColor="#000000"
+                        android:textSize="15dp"/>
+
+                <ImageView
+                        android:id="@+id/linkedinAni"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/linkedin" />
+
+                <ImageView
+                        android:id="@+id/twitterAni"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="180dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/twitter" />
+
+                <ImageView
+                        android:id="@+id/githubAni"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="240dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/github" />
+
+                <ImageView
+                        android:id="@+id/youtubeAni"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="300dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/youtube" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

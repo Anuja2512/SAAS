@@ -5,6 +5,7 @@ import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,7 @@ public class AddPatientActivity extends AppCompatActivity {
     DatabaseReference puserreference, docreference;
     FirebaseUser user;
     Boolean b=true;
+
     @Override
     public void onRestart() {
         super.onRestart();
@@ -35,7 +37,6 @@ public class AddPatientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_patient);
-
         int nightModeFlags = this.getApplicationContext().getResources().getConfiguration().uiMode &
                 Configuration.UI_MODE_NIGHT_MASK;
         switch (nightModeFlags) {
@@ -108,7 +109,6 @@ public class AddPatientActivity extends AppCompatActivity {
                                                                 }
                                                                 if(b)
                                                                 {
-                                                                    Toast.makeText(AddPatientActivity.this, "blah", Toast.LENGTH_SHORT).show();
                                                                     map=new HashMap<String, String>();
                                                                     map.put(patUid, patusern);
                                                                     docreference.push().setValue(map);

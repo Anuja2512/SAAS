@@ -14,7 +14,7 @@
             app:layout_constraintHorizontal_bias="0.482"
             android:layout_marginStart="32dp" android:layout_marginEnd="32dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView25"
-            android:id="@+id/scrollView2" app:layout_constraintVertical_bias="0.807">
+            android:id="@+id/scrollView2" app:layout_constraintVertical_bias="0.384">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:orientation="vertical">
 
@@ -60,13 +60,21 @@
                     android:fontFamily="@font/amaranth_italic"
                     android:text="TextView"
                     android:textSize="20sp"/>
+            <TextView
+                    android:id="@+id/dateee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/amaranth_italic"
+                    android:text="TextView"
+                    android:textSize="20sp"/>
         </LinearLayout>
     </ScrollView>
     <TextView
             android:id="@+id/textView25"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="108dp"
             android:fontFamily="@font/amaranth_bold"
             android:text="Prescription Details"
             android:textSize="24sp"

@@ -1,8 +1,11 @@
 <resources>
     <!-- Base application theme. -->
     <!--  Theme for App -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="materialTimePickerTheme">@style/AppTheme.MaterialTimePickerTheme</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/Headings</item>
+        <item name="android:textColorSecondary">@color/colorPrimaryDark</item>
     </style>
 
 

@@ -1,7 +1,12 @@
 package com.example.pokedoc;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Handler;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.widget.TextView;
@@ -11,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
+import android.widget.ImageView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
@@ -27,13 +33,58 @@ public class DoctorDashboard extends AppCompatActivity implements NavigationView
     Button button;
     FirebaseAuth mAuth;
     FirebaseUser user;
+    String currentUserID;
+    private DatabaseReference UsersRef;
+    private ImageView NavProfileImg;
+    private TextView NavUsername;
+    private TextView NavEmail;
     DatabaseReference usersReference;
+    Boolean isPressed=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_dashboard);
 
+        mAuth=FirebaseAuth.getInstance();
+        currentUserID=mAuth.getCurrentUser().getUid();
+        UsersRef=FirebaseDatabase.getInstance().getReference().child("Users");
+
         NavigationView navigationView=findViewById(R.id.navigation_view);
+        View navView=navigationView.inflateHeaderView(R.layout.header);
+
+        NavProfileImg=(ImageView)navView.findViewById(R.id.nav_profileimg);
+        NavUsername=(TextView)navView.findViewById(R.id.nav_profileusnm);
+        NavEmail=(TextView)navView.findViewById(R.id.nav_profilemail);
+
+        UsersRef.child(currentUserID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                {
+                    if (dataSnapshot.hasChild("Username")) {
+                        String username = dataSnapshot.child("Username").getValue().toString();
+                        NavUsername.setText(username);
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(),"Your Username was not set up successfully",Toast.LENGTH_LONG).show();
+                    }
+                    if (dataSnapshot.hasChild("Email ID")) {
+                        String mail = dataSnapshot.child("Email ID").getValue().toString();
+                        NavEmail.setText(mail);
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(),"Your mail was not set up successfully",Toast.LENGTH_LONG).show();
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -100,14 +151,28 @@ public class DoctorDashboard extends AppCompatActivity implements NavigationView
 
     }
 
-    @Override
-    public void onBackPressed() {
-        if(mNavDrawer.isDrawerOpen(GravityCompat.START)){
-            mNavDrawer.closeDrawer(GravityCompat.START);
-        }
-        else {
-            super.onBackPressed();
-        }
+    public void onBackPressed(){
+        new AlertDialog.Builder(this)
+                .setMessage("Do you wish to Logout or Exit?")
+                .setCancelable(false)
+
+                .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mAuth.signOut();
+                        finish();
+                        startActivity(new Intent(DoctorDashboard.this,RoleActivity.class));
+                    }
+                })
+                .setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mAuth.signOut();
+                        finish();
+                        startActivity(new Intent(DoctorDashboard.this,RoleActivity.class));
+                    }
+                })
+                .show();
     }
 
     @Override
@@ -115,10 +180,6 @@ public class DoctorDashboard extends AppCompatActivity implements NavigationView
         switch (menuItem.getItemId()){
             case R.id.HomeTab:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
-                break;
-            case R.id.ProfileTab:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DoctorSettingsFragment()).commit();
-
                 break;
             case R.id.ContactUs:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ContactUsFragment()).commit();

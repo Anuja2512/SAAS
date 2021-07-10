@@ -9,16 +9,17 @@
 >
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="84dp"
-        android:fontFamily="@font/amaranth_bold"
-        android:text="Select Time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+            android:id="@+id/button3"
+            android:layout_width="135dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="84dp"
+            android:fontFamily="@font/amaranth_bold"
+            android:text="Select Time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.481"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" android:background="#AB2196F3"
+            app:backgroundTint="#AB2196F3"/>
 
     <TextView
         android:id="@+id/textView19"
@@ -33,26 +34,28 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/amaranth_bold"
-        android:text="Set Reminder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/amaranth_bold"
+            android:text="Set Reminder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button3" android:background="#AB2196F3"
+            app:backgroundTint="#AB2196F3"/>
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="130dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/amaranth_bold"
-        android:text="Delete "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+            android:id="@+id/button5"
+            android:layout_width="130dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/amaranth_bold"
+            android:text="Delete "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button4" android:background="#AB2196F3"
+            app:backgroundTint="#AB2196F3"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

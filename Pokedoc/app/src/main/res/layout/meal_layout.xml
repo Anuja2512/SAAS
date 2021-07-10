@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingBottom="9dp"
+              android:paddingTop="9dp"
+              android:paddingLeft="40dp"
+              android:paddingRight="40dp"
+>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/list_bg">
+        <TextView
+                android:id="@+id/mealNameTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
+                android:textColor="#000000"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+
+                android:text="Food Name"
+                android:layout_marginLeft="10dp"
+                android:textSize="14sp"/>
+        <TextView
+                android:id="@+id/mealAmtTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp"
+                android:paddingRight="15dp"
+                android:textColor="#000000"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:text="Qty-null"
+
+                android:textSize="14sp" android:textAlignment="textEnd"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -13,25 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
-import org.jetbrains.annotations.NotNull;
+import com.google.firebase.database.annotations.NotNull;
+
 
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
-
     private Context context;
     public static final int MSG_TYPE_LEFT=0;
     public static final int MSG_TYPE_RIGHT=1;
     public String username;
     private List<Chat> messages;
     FirebaseUser fUser;
-
-
     public MessageAdapter(Context context,List <Chat> messages){
         this.context=context;
         this.messages=messages;
-
-
     }
     @NonNull
     @Override

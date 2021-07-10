@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent" android:background="#FFFFFF">
+
+    <TextView
+            android:text="Measures"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView31"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="40dp" android:textSize="24sp"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@+id/textView31"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/linearLayout7" android:layout_marginTop="16dp">
+        <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/Headings"
+                android:layout_marginBottom="15dp"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" android:gravity="center">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" android:layout_gravity="center">
+                <TextView
+                        android:text="Food Item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/t4"
+                />
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:paddingLeft="150dp">
+                <TextView
+                        android:text="Measure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView34"
+                />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/Headings"
+                android:layout_marginTop="24dp"
+        />
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_gravity="center" android:gravity="center"
+        >
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout4" android:padding="15dp"
+                    android:paddingRight="0dp" android:gravity="center_horizontal">
+                <TextView
+                        android:text="Fruits"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/textView35"
+                        android:layout_marginBottom="10dp"/>
+                <TextView
+                        android:text="Beverages"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView37"
+                        android:layout_marginBottom="10dp"/>
+                <TextView
+                        android:text="Rice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView50"
+                        android:layout_marginBottom="10dp"/>
+                <TextView
+                        android:text="Curry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView61"
+                        android:layout_marginBottom="10dp"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView62"
+                        android:layout_marginBottom="10dp" android:text="Roti/ Bread"/>
+                <TextView
+                        android:text="Eggs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView63"
+                        android:layout_marginBottom="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp" android:id="@+id/linearLayout6"
+                    android:gravity="center_horizontal" android:layout_marginLeft="100dp">
+                <TextView
+                        android:text="1 Unit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView36"
+                        android:layout_marginBottom="10dp"/>
+                <TextView
+                        android:text="100ml"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView51"
+                        android:layout_marginBottom="10dp"/>
+                <TextView
+                        android:text="1 Bowl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView52"
+                        android:layout_marginBottom="10dp"/>
+                <TextView
+                        android:text="1 Bowl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView53"
+                        android:layout_marginBottom="10dp"/>
+                <TextView
+                        android:text="1 Unit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView54"
+                        android:layout_marginBottom="10dp"/>
+                <TextView
+                        android:text="1 Unit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView55"
+                        android:layout_marginBottom="10dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+            android:id="@+id/divider5"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="@color/Headings"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout7"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout7"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

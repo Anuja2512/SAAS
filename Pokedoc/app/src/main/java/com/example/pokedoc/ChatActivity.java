@@ -1,35 +1,34 @@
 package com.example.pokedoc;
-
+import android.content.res.Configuration;
+import android.provider.ContactsContract;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
-import org.jetbrains.annotations.NotNull;
+import com.google.firebase.database.annotations.NotNull;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
-
     FirebaseUser fUser;
-    DatabaseReference reference;
+    DatabaseReference reference, reff;
     ImageButton send_btn;
     EditText msg_send;
     String receiver;
     HashMap<String, String> map;
     MessageAdapter messageAdapter;
     List<Chat> mChat;
-
+    Boolean b;
     RecyclerView recyclerView;
 
 
@@ -37,7 +36,29 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        int nightModeFlags = this.getApplicationContext().getResources().getConfiguration().uiMode &
+                Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                RelativeLayout layout = (RelativeLayout) findViewById(R.id.layout);
+                // Resources layout =getResources();
+                //  layout.(R.drawable.backgrounddark);
+                layout.setBackgroundResource(R.drawable.backdark);
+                break;
 
+            case Configuration.UI_MODE_NIGHT_NO:
+                RelativeLayout layoutlight = (RelativeLayout) findViewById(R.id.layout);
+                layoutlight.setBackgroundResource(R.drawable.back);
+                break;
+
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                RelativeLayout layoutd = (RelativeLayout) findViewById(R.id.layout);
+                // Resources layout =getResources();
+                //  layout.(R.drawable.backgrounddark);
+                layoutd.setBackgroundResource(R.drawable.backdark);
+                break;
+        }
+        b=true;
         send_btn=findViewById(R.id.btn_send);
         msg_send=findViewById(R.id.text_send);
         receiver=getIntent().getStringExtra("receiverUser");
@@ -63,7 +84,7 @@ public class ChatActivity extends AppCompatActivity {
                                 {
                                     String myusername = snapshot1.getValue(String.class);
                                     sendMessage(myusername,receiver,msg);
-                                    Toast.makeText(ChatActivity.this, receiver, Toast.LENGTH_SHORT).show();
+
 
                                 }
                             }
@@ -89,34 +110,112 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot dataSnapshot) {
                 mChat.clear();
-                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    map = new HashMap<>();
-                    for(DataSnapshot snapshot1: snapshot.getChildren())
-                    {
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                        for(DataSnapshot snapshot1: snapshot.getChildren())
+                        {
+                            if(snapshot1.getKey().toString().equals("Username"))
+                            {
+                                String myusername = snapshot1.getValue(String.class);
 
-                        if(snapshot1.getKey().equals("sender"))
-                        {
-                            String sender = snapshot1.getValue(String.class);
-                            map.put("sender", sender);
-                        }
-                        if(snapshot1.getKey().equals("receiver"))
-                        {
-                            String receiver = snapshot1.getValue(String.class);
-                            map.put("receiver", receiver);
-                        }
-                        if(snapshot1.getKey().equals("message"))
-                        {
-                            String message = snapshot1.getValue(String.class);
-                            map.put("message", message);
+                                for(DataSnapshot snapshott: dataSnapshot.getChildren()){
+                                    map = new HashMap<>();
+                                    String sender="";
+                                    String receiver1="";
+                                    for(DataSnapshot snapshott1: snapshott.getChildren())
+                                    {
 
+                                        if(snapshott1.getKey().equals("sender"))
+                                        {
+                                            sender = snapshott1.getValue(String.class);
+                                            if(sender.equals(receiver))
+                                            {
+                                                map.put("sender", sender);
+                                            }
+                                            if(sender.equals(myusername))
+                                            {
+                                                map.put("sender", sender);
+
+                                            }
+
+                                        }
+                                        if((snapshott1.getKey().equals("receiver")))
+                                        {
+                                            receiver1 = snapshott1.getValue(String.class);
+                                            if(receiver1.equals(receiver)){
+                                                map.put("receiver", receiver1);
+                                             //   Toast.makeText(ChatActivity.this, receiver1, Toast.LENGTH_SHORT).show();
+                                            }
+
+                                            if(receiver1.equals(myusername))
+                                            {
+                                                map.put("receiver", receiver1);
+                                               // Toast.makeText(ChatActivity.this, receiver1, Toast.LENGTH_SHORT).show();
+                                                reff= snapshott1.getRef();
+                                            }
+
+                                        }
+                                       if((sender.equals(receiver)&&receiver1.equals(myusername))||(sender.equals(myusername)&&receiver1.equals(receiver)))
+                                       {
+                                          DatabaseReference reference= snapshott.getRef();
+                                          String hash = reference.getKey();
+                                           final String[] senderr = {""};
+                                          DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Chats").child(hash);
+                                           databaseReference.addValueEventListener(new ValueEventListener() {
+                                               @Override
+                                               public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                   for(DataSnapshot dataSnapshot1: snapshot.getChildren())
+                                                   {
+
+                                                       if(dataSnapshot1.getKey().equals("sender"))
+                                                       {
+                                                           senderr[0] =dataSnapshot1.getValue(String.class);
+                                                           map.put("sender", senderr[0]);
+                                                       }
+                                                       if(dataSnapshot1.getKey().equals("message")) {
+                                                           String message = dataSnapshot1.getValue(String.class);
+                                                           map.put("message", message);
+
+                                                       }
+
+                                                   }
+                                                   Chat chat= new Chat(senderr[0],map.get("receiver"),map.get("message"));
+                                                   mChat.add(chat);
+                                                   messageAdapter= new MessageAdapter(ChatActivity.this,mChat);
+                                                   recyclerView.setAdapter(messageAdapter);
+
+                                               }
+
+                                               @Override
+                                               public void onCancelled(@NonNull DatabaseError error) {
+
+                                               }
+
+
+                                           });
+
+                                       }
+
+
+
+
+                                    }
+
+                                }
+
+                            }
                         }
 
                     }
-                    Chat chat= new Chat(map.get("sender"),map.get("receiver"),map.get("message"));
-                    mChat.add(chat);
-                    messageAdapter=new MessageAdapter(ChatActivity.this,mChat);
-                    recyclerView.setAdapter(messageAdapter);
-                }
+
+                    @Override
+                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                    }
+                });
+
             }
 
             @Override
@@ -137,3 +236,5 @@ public class ChatActivity extends AppCompatActivity {
     }
 
 }
+
+

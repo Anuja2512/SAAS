@@ -26,7 +26,7 @@
             android:id="@+id/mainlayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11">
+            app:layout_constraintTop_toBottomOf="@+id/textView11" android:layout_marginTop="36dp">
 
         <EditText
                 android:layout_width="match_parent"
@@ -43,7 +43,9 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/amaranth_bold"
                 android:text="Upload"
-                android:layout_marginTop="50dp"/>
+                android:layout_marginTop="50dp"
+                android:background="#AB2196F3"
+                app:backgroundTint="#AB2196F3"/>
 
         <Button
 
@@ -51,12 +53,13 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/amaranth_bold"
                 android:layout_gravity="center"
-                android:text="View PDF Files"
+                android:text="View Files"
                 android:layout_marginTop="30dp"
-                android:id="@+id/btn_viewFiles"/>
+                android:id="@+id/btn_viewFiles"
+                android:background="#AB2196F3"
+                app:backgroundTint="#AB2196F3"/>
 
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

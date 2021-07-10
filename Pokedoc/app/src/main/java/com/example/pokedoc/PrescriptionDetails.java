@@ -14,9 +14,12 @@ import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
-import org.jetbrains.annotations.NotNull;
 
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class PrescriptionDetails extends AppCompatActivity {
@@ -24,11 +27,14 @@ public class PrescriptionDetails extends AppCompatActivity {
     Button submit, addmed;
     EditText med, desc, dosage;
     DatabaseReference reference, reference1, reference2, reference3;
+
     HashMap<String, String> map= new HashMap<>();;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prescription_details);
+        String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
         int nightModeFlags = this.getApplicationContext().getResources().getConfiguration().uiMode &
                 Configuration.UI_MODE_NIGHT_MASK;
         switch (nightModeFlags) {
@@ -56,6 +62,7 @@ public class PrescriptionDetails extends AppCompatActivity {
         dosage=findViewById(R.id.dosetext);
         desc=findViewById(R.id.destext);
         addmed=findViewById(R.id.button10);
+
         addmed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,7 +93,7 @@ public class PrescriptionDetails extends AppCompatActivity {
                                         reference2=FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
                                         reference2.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
-                                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                 for(DataSnapshot snapshot1: snapshot.getChildren())
                                                 {
                                                     if(snapshot1.getKey().equals("Username"))
@@ -99,38 +106,40 @@ public class PrescriptionDetails extends AppCompatActivity {
                                             }
 
                                             @Override
-                                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                                            public void onCancelled(@NonNull DatabaseError error) {
 
                                             }
                                         });
                                         reference3=FirebaseDatabase.getInstance().getReference().child("Users").child(patuid);
                                         reference3.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
-                                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                            public void onDataChange(@NonNull  DataSnapshot snapshot) {
                                                 for(DataSnapshot snapshot1: snapshot.getChildren())
                                                 {
                                                     if(snapshot1.getKey().equals("Username"))
                                                     {
                                                         String patusername = snapshot1.getValue(String.class);
                                                         map.put("Patient", patusername);
-                                                        Toast.makeText(PrescriptionDetails.this, snapshot1.getValue(String.class), Toast.LENGTH_SHORT).show();
+                                                      //  Toast.makeText(PrescriptionDetails.this, snapshot1.getValue(String.class), Toast.LENGTH_SHORT).show();
                                                         map.put("Medicine", medicine);
                                                         map.put("Dosage", dose);
                                                         map.put("Description", description);
+                                                        map.put("Date", date);
                                                         map.put("Reminder", "Not Set");
                                                     }
 
                                                 }
+                                                reference.push().setValue(map);
+                                                reference1.push().setValue(map);
                                             }
 
                                             @Override
-                                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                                            public void onCancelled(@NonNull DatabaseError error) {
 
                                             }
                                         });
 
-                                        reference.push().setValue(map);
-                                        reference1.push().setValue(map);
+
                                         med.setText("");
                                         dosage.setText("");
                                         desc.setText("");

@@ -1,15 +1,15 @@
 package com.example.pokedoc;
 
 
-class uploadFile {
+class UploadFiless {
     public String name;
     public String url;
 
-    public uploadFile(){
+    public UploadFiless(){
 
     }
 
-    public uploadFile(String name, String url){
+    public UploadFiless(String name, String url){
         this.name=name;
         this.url=url;
     }

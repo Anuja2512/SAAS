@@ -12,24 +12,65 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ViewAllFiles">
+        <activity android:name=".PatientAboutUs">
         </activity>
-        <activity android:name=".ChatActivity">
+        <activity android:name=".FoodWiki">
         </activity>
-        <activity android:name=".PrescriptionDetails">
+        <activity
+                android:name=".ViewReportsDoctor"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan">
         </activity>
-        <activity android:name=".AddPrescription">
+        <activity
+                android:name=".AddMeal"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan">
         </activity>
-        <activity android:name=".PatientOverview">
+        <activity
+                android:name=".ViewAllFiles"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan">
         </activity>
-        <activity android:name=".PrescriptionPatient">
+        <activity
+                android:name=".ChatActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan">
         </activity>
-        <activity android:name=".SetReminder">
+        <activity
+                android:name=".PrescriptionDetails"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity
+                android:name=".AddPrescription"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity
+                android:name=".PatientOverview"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity
+                android:name=".PrescriptionPatient"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity
+                android:name=".SetReminder"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan">
         </activity>
 
-        <receiver android:name=".AlarmReciever"/>
+        <receiver
+                android:name=".AlarmReciever"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan"/>
 
-        <activity android:name=".AddPatientActivity">
+        <activity
+                android:name=".AddPatientActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
                 android:name=".DoctorDashboard"
@@ -40,7 +81,9 @@
                 android:name=".PatientDashboard"
                 android:hardwareAccelerated="false"
                 android:largeHeap="true"
-                android:theme="@style/AppTheme.Toolbar">
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme.Toolbar"
+                android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
                 android:name=".RegisterActivity"

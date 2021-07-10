@@ -6,15 +6,15 @@
           android:title="@string/home"/>
 
     <item android:id="@+id/menuFavourite"
-          android:icon="@drawable/ic_baseline_favorite_24"
+          android:icon="@drawable/doctor"
           android:title="My Doctors"/>
 
     <item android:id="@+id/menuAccount"
-          android:icon="@android:drawable/ic_menu_agenda"
-          android:title="My Prescriptions"/>
+          android:icon="?attr/actionModePasteDrawable"
+          android:title="Prescriptions"/>
 
     <item android:title="My Reports"
-          android:icon="@drawable/file" android:id="@+id/myreports"/>
+          android:id="@+id/myreports" android:icon="?android:attr/actionModeFindDrawable"/>
     <item android:id="@+id/menuSettings"
           android:icon="@drawable/ic_baseline_settings_24"
           android:title="@string/settings"/>

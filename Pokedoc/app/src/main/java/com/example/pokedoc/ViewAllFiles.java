@@ -1,9 +1,9 @@
 package com.example.pokedoc;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
-import org.jetbrains.annotations.NotNull;
+import com.google.firebase.database.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,25 +21,47 @@ import java.util.List;
 public class ViewAllFiles extends AppCompatActivity {
 
     ListView myPDFListView;
+    TextView mytext;
     DatabaseReference databaseReference;
-    List<uploadFile> uploadFile;
+    List<UploadFiless> uploadFile;
     HashMap<String, String > map;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all_files);
+        int nightModeFlags = this.getApplicationContext().getResources().getConfiguration().uiMode &
+                Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                RelativeLayout layout = (RelativeLayout) findViewById(R.id.layout);
+                // Resources layout =getResources();
+                //  layout.(R.drawable.backgrounddark);
+                layout.setBackgroundResource(R.drawable.backdark);
+                break;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+                RelativeLayout layoutlight = (RelativeLayout) findViewById(R.id.layout);
+                layoutlight.setBackgroundResource(R.drawable.back);
+                break;
+
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                RelativeLayout layoutd = (RelativeLayout) findViewById(R.id.layout);
+                // Resources layout =getResources();
+                //  layout.(R.drawable.backgrounddark);
+                layoutd.setBackgroundResource(R.drawable.backdark);
+                break;
+        }
 
         myPDFListView=(ListView)findViewById(R.id.myListView);
         uploadFile=new ArrayList<>();
 
         viewAllFiles();
-
         myPDFListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                uploadFile uploadFiless= uploadFile.get(i);
-                Intent intent=new Intent();
-                //intent.setType(Intent.ACTION_VIEW);
+                UploadFiless uploadFiless= uploadFile.get(i);
+                Toast.makeText(ViewAllFiles.this, Uri.parse(uploadFiless.getUrl()).toString(), Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(uploadFiless.getUrl()));
                 startActivity(intent);
 
@@ -53,23 +75,28 @@ public class ViewAllFiles extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot){
                     for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                        map = new HashMap<>();
                         for(DataSnapshot snapshot: postSnapshot.getChildren())
                         {
-                            map = new HashMap<>();
+
                             if(snapshot.getKey().equals("name"))
                             {
                                 String name = snapshot.getValue(String.class);
                                 map.put("name", name);
+
                             }
                             if(snapshot.getKey().equals("url"))
                             {
                                 String url = snapshot.getValue(String.class);
                                 map.put("url", url);
                             }
+
                         }
-                        //uploadFile uploadFiles= new uploadFile(map.get("name"), map.get("url"));
-                        uploadFile uploadFiles=postSnapshot.getValue(uploadFile.class);
-                        uploadFile.add(uploadFiles);
+                     //   Toast.makeText(ViewAllFiles.this, map.get("name")+ map.get("url"), Toast.LENGTH_SHORT).show();
+
+                       // uploadFile uploadFiles= new uploadFile(map.get("name"), map.get("url"));
+                       UploadFiless uploadFiles=new UploadFiless(map.get("name"), map.get("url"));
+                       uploadFile.add(uploadFiles);
                     }
 
                     String[] uploads=new String[uploadFile.size()];
@@ -78,21 +105,10 @@ public class ViewAllFiles extends AppCompatActivity {
                         uploads[i]=uploadFile.get(i).getName();
                     }
 
-                ArrayAdapter<String> adapter=new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,uploads){
-
-
-                        @Override
-                    public View getView(int position, View convertView, ViewGroup parent){
-
-                          View view=super.getView(position,convertView,parent);
-                          TextView mytext=(TextView)view.findViewById(android.R.id.text1);
-                          mytext.setTextColor(Color.BLACK);
-
-
-                           return view;
-                        }
-                    };
+               ArrayAdapter<String> adapter=new ArrayAdapter<String>(getApplicationContext(), R.layout.reportitem,uploads);
                     myPDFListView.setAdapter(adapter);
+
+
 
                 }
 

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,31 +36,7 @@ public class MyDoctorsFragment extends Fragment{
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mDoctors=new ArrayList<>();
         mDoctorNames=new ArrayList<>();
-        temp = new ArrayList<>();
         readDoctors();
-
-        int nightModeFlags = this.getActivity().getResources().getConfiguration().uiMode &
-                Configuration.UI_MODE_NIGHT_MASK;
-        switch (nightModeFlags) {
-            case Configuration.UI_MODE_NIGHT_YES:
-                ConstraintLayout layout = (ConstraintLayout)rootview.findViewById(R.id.layout);
-                // Resources layout =getResources();
-                //  layout.(R.drawable.backgrounddark);
-                layout.setBackgroundResource(R.drawable.backdark);
-                break;
-
-            case Configuration.UI_MODE_NIGHT_NO:
-                ConstraintLayout layoutlight = (ConstraintLayout)rootview.findViewById(R.id.layout);
-                layoutlight.setBackgroundResource(R.drawable.back);
-                break;
-
-            case Configuration.UI_MODE_NIGHT_UNDEFINED:
-                ConstraintLayout layoutd = (ConstraintLayout)rootview.findViewById(R.id.layout);
-                // Resources layout =getResources();
-                //  layout.(R.drawable.backgrounddark);
-                layoutd.setBackgroundResource(R.drawable.backdark);
-                break;
-        }
         return rootview;
     }
 
@@ -69,7 +45,7 @@ public class MyDoctorsFragment extends Fragment{
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Users").child(firebaseUser.getUid()).child("Doctors");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mDoctors.clear();
                 mDoctorNames.clear();
                 for(DataSnapshot snapshot1: snapshot.getChildren()){
@@ -79,41 +55,53 @@ public class MyDoctorsFragment extends Fragment{
                         DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference().child("Users").child(doctoruid);
                         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
-                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String docnamee="";
                                 for(DataSnapshot snapshot3: snapshot.getChildren())
                                 {
+                                    temp = new ArrayList<>();
                                     if(snapshot3.getKey().equals("Name"))
                                     {
-                                       String docname = snapshot3.getValue().toString();
-                                        temp.add(docname);
+
+                                        Doctor doctor= new Doctor(snapshot2.getValue(String.class),snapshot3.getValue(String.class) );
+                                        String docname = snapshot3.getValue().toString();
+
+                                        temp.add( docname);
+                                        mDoctorNames.add(doctor);
+                                        docnamee = temp.toString();
                                     }
 
+
                                 }
+                              //  Toast.makeText(getActivity(), docnamee, Toast.LENGTH_SHORT).show();
+                                Doctor doctor= new Doctor(snapshot2.getValue(String.class), docnamee);
+                                mDoctors.add(doctor);
+
+                                myDocAdapter = new MyDocAdapter(getContext(),mDoctors,mDoctorNames);
+                              //  Toast.makeText(getActivity(), snapshot2.getValue(String.class), Toast.LENGTH_SHORT).show();
+                                recyclerView.setAdapter(myDocAdapter);
                             }
 
+
                             @Override
-                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                            public void onCancelled(@NonNull DatabaseError error) {
 
                             }
                         });
 
-                        Doctor doctor= new Doctor(snapshot2.getValue(String.class), temp.toString());
-                      mDoctors.add(doctor);
-
-
-                       mDoctorNames.add(doctor);
                     }
                 }
 
-                myDocAdapter = new MyDocAdapter(getContext(),mDoctors,mDoctorNames);
-                recyclerView.setAdapter(myDocAdapter);
+
 
             }
 
             @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+
+
     }
 }

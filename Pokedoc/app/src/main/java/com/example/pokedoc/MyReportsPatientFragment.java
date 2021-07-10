@@ -3,7 +3,6 @@ package com.example.pokedoc;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -24,9 +22,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
 import com.google.firebase.storage.*;
 import org.jetbrains.annotations.NotNull;
-
-import javax.xml.transform.Result;
-
 
 
 public class MyReportsPatientFragment extends Fragment {
@@ -118,7 +113,7 @@ public class MyReportsPatientFragment extends Fragment {
                         Task<Uri> uri=taskSnapshot.getStorage().getDownloadUrl();
                         while(!uri.isComplete());
                         Uri url=uri.getResult();
-                        uploadFile uploadFile=new uploadFile(editPDFName.getText().toString(), url.toString());
+                        UploadFiless uploadFile=new UploadFiless(editPDFName.getText().toString(), url.toString());
                         databaseReference.child(databaseReference.push().getKey()).setValue(uploadFile);
                         Toast.makeText(getActivity(),"File Uploaded",Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
