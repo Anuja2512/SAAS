@@ -21,6 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Username"
+            android:fontFamily="@font/amaranth_bold"
             android:paddingLeft="10dp"
             android:textSize="28sp"
             android:textColor="#000000"
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:textSize="18sp"
+            android:fontFamily="@font/amaranth_bold"
             android:id="@+id/nav_profilemail"
             android:paddingLeft="10dp"
             android:text="email ID"/>

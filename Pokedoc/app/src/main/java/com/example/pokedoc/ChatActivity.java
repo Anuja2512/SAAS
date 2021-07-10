@@ -9,10 +9,12 @@ import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.pokedoc.Notifications.Token;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
 import com.google.firebase.database.annotations.NotNull;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 
 import java.util.ArrayList;
@@ -223,6 +225,7 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         });
+        updateToken(FirebaseMessaging.getInstance().getToken().toString());
 
     }
 
@@ -233,6 +236,12 @@ public class ChatActivity extends AppCompatActivity {
         hashMap.put("receiver",receiver);
         hashMap.put("message",message);
         databaseReference.push().setValue(hashMap);
+    }
+    private void updateToken(String refreshToken) {
+        FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Tokens");
+        Token token1=new Token(refreshToken);
+        reference.child(firebaseUser.getUid()).setValue(token1);
     }
 
 }

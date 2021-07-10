@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +63,15 @@ public class MyReportsPatientFragment extends Fragment {
         btn_upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectPDFFile();
+                if(TextUtils.isEmpty(editPDFName.getText().toString()) ){
+                editPDFName.setError("Please Enter File Name");
+                editPDFName.requestFocus();
+
+                }
+                else{
+                    selectPDFFile();
+                }
+
             }
         });
 
