@@ -41,23 +41,46 @@ Most applications focus on providing immediate access from a list of registered 
 Getting Started:
 
 ### Steps for Installation:
-1. Install the Android Studio IDE on your Laptop/Desktop.
-2. Open the android code which you have just downloaded, via Android Studio
-IDE.
-3. Once the source code is opened in the Android Studio window, wait until the code is configured and the build is running.
-4. In your mobile phone enable the Developer mode.
- Steps for enabling the Developer mode:
-1. Click on the About Phone options in the settings of your mobile phone.
+### 1. Install the Android Studio IDE on your Laptop/Desktop.
+
+![Step_1](./Step1.png "Installation Step 1")
+
+### 2. Open the android code which you have just downloaded, via Android Studio IDE.
+
+![Step_2](./Step2.png "Installation Step 2")
+
+### 3. Once the source code is opened in the Android Studio window, wait until the code is configured and the build is running.
+
+![Step_3](./Step3.png "Installation Step 3")
+
+### 4. In your mobile phone enable the Developer mode.
+  Steps for enabling the Developer mode:
+ 1. Click on the About Phone options in the settings of your mobile phone.
+
+![Step_4](./Step4.png "Installation Step 4")
+
 2. Next, click on Build Number option for 7 times.
+
+![Step_5](./Step5.png "Installation Step 5")
+
 3. It will show you a toast message, and your Developer Options will be enabled.
-5. Now, click on the Developer Options in the settings of your mobile phone.
+
+### 5. Now, click on the Developer Options in the settings of your mobile phone.
  
-6. Enable the USB Debugging mode.
-7. Connect your Android mobile phone via USB cable to your Laptop/Desktop.
-8. Click on the 'Run' button(Green Triangle Button) in your Android Studio window after detecting your
-mobile name.
-9. Wait until the application is installed on your android mobile phone.
-10. Once the application has been installed, feel free to use the 'PokeDoc' app on your phone!
+![Step_6](./Step6.png "Installation Step 6")
+ 
+### 6. Enable the USB Debugging mode.
+
+![Step_7](./Step7.png "Installation Step 7")
+
+### 7. Connect your Android mobile phone via USB cable to your Laptop/Desktop.
+
+### 8. Click on the 'Run' button(Green Triangle Button) in your Android Studio window after detecting your mobile name.
+
+![Step_8](./Step8.png "Installation Step 8")
+
+### 9. Wait until the application is installed on your android mobile phone.
+### 10. Once the application has been installed, feel free to use the 'PokeDoc' app on your phone!
 
 
 
