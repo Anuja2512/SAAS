@@ -80,7 +80,12 @@ Getting Started:
 ![Step_8](./Step8.png "Installation Step 8")
 
 ### 9. Wait until the application is installed on your android mobile phone.
+
+![Step_9](./Step9.png "Installation Step 9")
+
 ### 10. Once the application has been installed, feel free to use the 'PokeDoc' app on your phone!
+
+![Step_10](./Step10.png "Installation Step 10")
 
 
 
