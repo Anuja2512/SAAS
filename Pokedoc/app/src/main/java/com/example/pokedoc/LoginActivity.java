@@ -2,6 +2,7 @@ package com.example.pokedoc;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -44,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 1;
     private GoogleApiClient mGoogleSignInClient;
     private static final String TAG = "LoginActivity";
+    public static String PREFS_NAME="MyPresFile";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,6 +159,7 @@ public class LoginActivity extends AppCompatActivity {
             {
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
+
             }
             else
             {
@@ -191,6 +195,10 @@ public class LoginActivity extends AppCompatActivity {
                                                     Intent intent = new Intent(LoginActivity.this, PatientDashboard.class);
                                                     intent.putExtra("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                                     startActivity(intent);
+                                                    SharedPreferences sharedPreferences=getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+                                                    SharedPreferences.Editor editor=sharedPreferences.edit();
+                                                    editor.putBoolean("hasLoggedIn", true);
+                                                    editor.commit();
                                                     finish();
                                                     loadingBar.dismiss();
                                                 }
@@ -210,6 +218,10 @@ public class LoginActivity extends AppCompatActivity {
                                                     Intent intent = new Intent(LoginActivity.this, DoctorDashboard.class);
                                                     intent.putExtra("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                                     startActivity(intent);
+                                                    SharedPreferences sharedPreferences=getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+                                                    SharedPreferences.Editor editor=sharedPreferences.edit();
+                                                    editor.putBoolean("hasLoggedIn", true);
+                                                    editor.commit();
                                                     finish();
                                                     loadingBar.dismiss();
                                                 }
@@ -287,6 +299,10 @@ public class LoginActivity extends AppCompatActivity {
                                                 Intent intent = new Intent(LoginActivity.this, PatientDashboard.class);
                                                 intent.putExtra("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                                 startActivity(intent);
+                                                SharedPreferences sharedPreferences=getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+                                                SharedPreferences.Editor editor=sharedPreferences.edit();
+                                                editor.putBoolean("hasLoggedIn", true);
+                                                editor.commit();
                                                 finish();
                                                 loadingBar.dismiss();
                                             }
@@ -313,6 +329,10 @@ public class LoginActivity extends AppCompatActivity {
                                                 Intent intent = new Intent(LoginActivity.this, DoctorDashboard.class);
                                                 intent.putExtra("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                                 startActivity(intent);
+                                                SharedPreferences sharedPreferences=getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+                                                SharedPreferences.Editor editor=sharedPreferences.edit();
+                                                editor.putBoolean("hasLoggedIn", true);
+                                                editor.commit();
                                                 finish();
                                                 loadingBar.dismiss();
                                             }

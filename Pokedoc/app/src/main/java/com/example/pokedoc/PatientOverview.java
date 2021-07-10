@@ -36,7 +36,7 @@ public class PatientOverview extends AppCompatActivity {
     ImageView deletepat;
     ImageView chat;
     String patuid;
-    TextView gendertext, nametext, emailtext, numbertext;
+    TextView gendertext, nametext, emailtext, numbertext, agen;
     FirebaseAuth mAuth;
     FirebaseUser user;
     DatabaseReference usersReference, foodref;
@@ -83,6 +83,7 @@ public class PatientOverview extends AppCompatActivity {
         gendertext=findViewById(R.id.emailn);
         emailtext=findViewById(R.id.namen);
         nametext=findViewById(R.id.usern);
+        agen = findViewById(R.id.agen);
         numbertext=findViewById(R.id.numbern);
         prescbtn=findViewById(R.id.button6);
         chat=findViewById(R.id.imageView4);
@@ -125,6 +126,11 @@ public class PatientOverview extends AppCompatActivity {
                     {
                         String email = snapshot1.getValue(String.class);
                         emailtext.setText(email);
+                    }
+                    if(snapshot1.getKey().equals("Age"))
+                    {
+                        String Age = snapshot1.getValue(String.class);
+                        agen.setText(Age);
                     }
                 }
             }

@@ -6,6 +6,7 @@ import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -42,30 +43,20 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
-        Chat chat=messages.get(position);
-        ViewHolder.show_message.setText(chat.getMessage());
+    private void makeOwn(MessageAdapter.ViewHolder holder) {
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                holder.itemView.getLayoutParams();
+        params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        holder.itemView.setLayoutParams(params);
+    }
+    private void makeOpponent(MessageAdapter.ViewHolder holder) {
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                holder.itemView.getLayoutParams();
+        params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        holder.itemView.setLayoutParams(params);
 
     }
-
-    @Override
-    public int getItemCount() {
-        return messages.size();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder{
-        static public TextView show_message;
-
-
-        public ViewHolder(View itemView){
-            super(itemView);
-            show_message = itemView.findViewById(R.id.show_message);
-
-        }
-    }
-
-    @Override
+    /*@Override
     public int getItemViewType(int position){
         fUser= FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -94,6 +85,34 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             return MSG_TYPE_LEFT;
         }
     }
+
+*/
+
+    @Override
+    public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
+        Chat chat=messages.get(position);
+        ViewHolder.show_message.setText(chat.getMessage());
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return messages.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder{
+        static public TextView show_message;
+
+
+        public ViewHolder(View itemView){
+            super(itemView);
+            show_message = itemView.findViewById(R.id.show_message);
+
+        }
+    }
+
+
+
 
 }
 

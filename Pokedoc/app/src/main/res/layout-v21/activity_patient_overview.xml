@@ -72,6 +72,14 @@
                                 android:layout_alignParentTop="true" android:layout_alignParentBottom="true"
                                 android:layout_marginBottom="0dp" android:layout_alignParentEnd="true"
                                 android:layout_marginEnd="0dp" android:id="@+id/numbern"/>
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="0dp" android:layout_marginTop="5dp"
+                                android:layout_alignParentTop="true" android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="0dp" android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="0dp" android:id="@+id/agen" android:text="hello"/>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

@@ -3,6 +3,7 @@ package com.example.pokedoc;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -100,15 +101,18 @@ public class PatientDashboard extends AppCompatActivity {
                 .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mAuth.signOut();
                         finish();
-                        startActivity(new Intent(PatientDashboard.this,RoleActivity.class));
+                        System.exit(0);
                     }
                 })
                 .setPositiveButton("Logout", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mAuth.signOut();
+                        FirebaseAuth.getInstance().signOut();
+                        SharedPreferences sharedPreferences=getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+                        SharedPreferences.Editor editor=sharedPreferences.edit();
+                        editor.putBoolean("hasLoggedIn", false);
+                        editor.commit();
                         finish();
                         startActivity(new Intent(PatientDashboard.this,RoleActivity.class));
                     }

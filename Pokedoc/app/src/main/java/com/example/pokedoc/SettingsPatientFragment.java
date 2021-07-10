@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -54,6 +55,10 @@ public class SettingsPatientFragment extends Fragment
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
+                SharedPreferences sharedPreferences=getActivity().getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.putBoolean("hasLoggedIn", false);
+                editor.commit();
                 getActivity().finish();
             }
         });

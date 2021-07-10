@@ -4,10 +4,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Handler;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.*;
+import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,9 +45,49 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-               // SharedPreferences sharedPreferences=getSharedPreferences()
-                startActivity(new Intent(MainActivity.this,RoleActivity.class));
-                finish();
+                SharedPreferences sharedPreferences=getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+                boolean hasLoggedIn = sharedPreferences.getBoolean("hasLoggedIn", false);
+                if(hasLoggedIn)
+                {
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                            for(DataSnapshot snapshot1 : snapshot.getChildren())
+                            {
+                                if(snapshot1.getKey().equals("Role"))
+                                {
+                                    String role = snapshot1.getValue(String.class);
+                                   // Toast.makeText(MainActivity.this, role, Toast.LENGTH_SHORT).show();
+                                    if(role.equals("patient"))
+                                    {
+                                        Intent topathome = new Intent(MainActivity.this, PatientDashboard.class);
+                                        startActivity(topathome);
+                                        finish();
+                                    }
+                                    if(role.equals("doctor"))
+                                    {
+                                        Intent todochome = new Intent(MainActivity.this, DoctorDashboard.class);
+                                        startActivity(todochome);
+                                        finish();
+                                    }
+
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                        }
+                    });
+                }
+                else
+                {
+                    startActivity(new Intent(MainActivity.this,RoleActivity.class));
+                    finish();
+                }
+
             }
         },1500);
     }

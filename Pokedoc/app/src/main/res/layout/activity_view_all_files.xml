@@ -11,30 +11,29 @@
 
     <ListView
             android:layout_width="wrap_content"
-            android:layout_height="455dp"
+            android:layout_height="wrap_content"
             android:id="@+id/myListView"
             android:padding="10dp"
-            android:layout_marginBottom="123dp"
+            android:layout_marginBottom="152dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="89dp"
+            android:layout_marginEnd="40dp"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="40dp"
             android:layout_alignParentBottom="true">
 
     </ListView>
-
     <TextView
             android:text="All Reports"
-            android:layout_width="208dp"
-            android:layout_height="79dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/textView20"
             android:layout_above="@+id/myListView"
             android:layout_marginBottom="34dp"
             android:textSize="30sp"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="72dp"
+            android:layout_marginEnd="40dp"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="111dp"/>
+            android:layout_marginStart="40dp"/>
 
 
 </RelativeLayout>

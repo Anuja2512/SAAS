@@ -3,6 +3,7 @@ package com.example.pokedoc;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -103,7 +104,6 @@ public class DoctorDashboard extends AppCompatActivity implements NavigationView
             navigationView.setCheckedItem(R.id.HomeTab);
         }
 
-        uid = getIntent().getStringExtra("uid");
 
         int nightModeFlags = this.getApplicationContext().getResources().getConfiguration().uiMode &
                 Configuration.UI_MODE_NIGHT_MASK;
@@ -127,7 +127,7 @@ public class DoctorDashboard extends AppCompatActivity implements NavigationView
                 layoutd.setBackgroundResource(R.drawable.backdark);
                 break;
         }
-        usersReference= FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
+        usersReference= FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         usersReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
@@ -159,15 +159,24 @@ public class DoctorDashboard extends AppCompatActivity implements NavigationView
                 .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mAuth.signOut();
-                        finish();
-                        startActivity(new Intent(DoctorDashboard.this,RoleActivity.class));
+                       // mAuth.signOut();
+                      //  finish();
+                      //  startActivity(new Intent(DoctorDashboard.this,RoleActivity.class));
+
+                        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                        homeIntent.addCategory( Intent.CATEGORY_HOME );
+                        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeIntent);
                     }
                 })
                 .setPositiveButton("Logout", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mAuth.signOut();
+                        FirebaseAuth.getInstance().signOut();
+                        SharedPreferences sharedPreferences=getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+                        SharedPreferences.Editor editor=sharedPreferences.edit();
+                        editor.putBoolean("hasLoggedIn", false);
+                        editor.commit();
                         finish();
                         startActivity(new Intent(DoctorDashboard.this,RoleActivity.class));
                     }
@@ -192,6 +201,10 @@ public class DoctorDashboard extends AppCompatActivity implements NavigationView
                 break;
             case R.id.LogoutTab:
                 FirebaseAuth.getInstance().signOut();
+                SharedPreferences sharedPreferences=getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.putBoolean("hasLoggedIn", false);
+                editor.commit();
                 finish();
                 break;
         }
