@@ -14,7 +14,6 @@ public class RoleActivity extends AppCompatActivity {
 
     Button Patient,Doctor;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -60,7 +60,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder> {
         ViewHolder.mView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Toast.makeText(view.getContext(), foodName.get(position), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(view.getContext(), foodName.get(position), Toast.LENGTH_SHORT).show();
                 AlertDialog.Builder dialog = new AlertDialog.Builder(view.getContext());
                 dialog.setTitle("Delete The Meal");
                 dialog.setMessage("Deleting this meal will result in completely removing this " +
@@ -68,37 +68,8 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder> {
                 dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-//                        final String[] hash = {""};
-//                        final DatabaseReference[] ref = {null};
-                        DatabaseReference deUsers = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Nutrition").child(date).child(hash);
-//                        deUsers.addListenerForSingleValueEvent(new ValueEventListener() {
-//                            @Override
-//                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-//                                for(DataSnapshot snapshot1: snapshot.getChildren())
-//                                {
-//                                    hash[0] =snapshot1.getKey();
-//                                    for (DataSnapshot snapshot2: snapshot1.getChildren())
-//                                    {
-//                                        if(snapshot2.getKey().equals("Food Item"))
-//                                        {
-//                                            if(snapshot2.getValue(String.class).equals(foodList));
-//
-//                                            {
-//                                                String reqhash = hash[0];
-//                                                Toast.makeText(view.getContext(), reqhash, Toast.LENGTH_SHORT).show();
-//                                                ref[0] =snapshot1.getRef();
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-//
-//                            }
-//                        });
 
+                        DatabaseReference deUsers = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Nutrition").child(date).child(hash);
 
                         foodName.remove(position);
                         foodQty.remove(position);

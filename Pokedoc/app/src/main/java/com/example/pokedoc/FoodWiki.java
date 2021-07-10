@@ -18,9 +18,15 @@ public class FoodWiki extends AppCompatActivity {
         webView=findViewById(R.id.webviewWiki);
         Intent intent=getIntent();
         String webLink=intent.getStringExtra("links");
+
+        webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(webLink);
 
-        WebSettings webSettings=webView.getSettings();
+        WebSettings webSettings = webView.getSettings();
+        webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setJavaScriptEnabled(true);
         webSettings.setJavaScriptEnabled(true);
+
+
     }
 }

@@ -134,28 +134,60 @@ public class ContactUsFragment extends Fragment{
         youtube1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://www.youtube.com/channel/UCSXUw74b69HWgK45UgJnPlg");
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                String[] emails_in_to={"swarangi.patil@gmail.com"};
+                intent.putExtra(Intent.EXTRA_EMAIL, emails_in_to );
+                intent.putExtra(Intent.EXTRA_SUBJECT,"Your Email’s Subject");
+                intent.putExtra(Intent.EXTRA_TEXT, "Your Email’s Body");
+                intent.putExtra(Intent.EXTRA_CC,"mailcc@gmail.com");
+                intent.setType("text/html");
+                intent.setPackage("com.google.android.gm");
+                startActivity(intent);
             }
         });
 
         youtube2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://www.youtube.com/channel/UCiZzenIzUkbTEnMSbMf07Ow");
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                String[] emails_in_to={"anujajadhav2512@gmail.com"};
+                intent.putExtra(Intent.EXTRA_EMAIL, emails_in_to );
+                intent.putExtra(Intent.EXTRA_SUBJECT,"Your Email’s Subject");
+                intent.putExtra(Intent.EXTRA_TEXT, "Your Email’s Body");
+                intent.putExtra(Intent.EXTRA_CC,"mailcc@gmail.com");
+                intent.setType("text/html");
+                intent.setPackage("com.google.android.gm");
+                startActivity(intent);
             }
         });
 
         youtube3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://www.youtube.com/channel/UCSXUw74b69HWgK45UgJnPlg");
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                String[] emails_in_to={"dsayali422@gmail.com"};
+                intent.putExtra(Intent.EXTRA_EMAIL, emails_in_to );
+                intent.putExtra(Intent.EXTRA_SUBJECT,"Your Email’s Subject");
+                intent.putExtra(Intent.EXTRA_TEXT, "Your Email’s Body");
+                intent.putExtra(Intent.EXTRA_CC,"mailcc@gmail.com");
+                intent.setType("text/html");
+                intent.setPackage("com.google.android.gm");
+                startActivity(intent);
             }
         });
 
         youtube4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://www.youtube.com/channel/UCSXUw74b69HWgK45UgJnPlg");
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                String[] emails_in_to={"aniketsablepatil99k@gmail.com"};
+                intent.putExtra(Intent.EXTRA_EMAIL, emails_in_to );
+                intent.putExtra(Intent.EXTRA_SUBJECT,"Your Email’s Subject");
+                intent.putExtra(Intent.EXTRA_TEXT, "Your Email’s Body");
+                intent.putExtra(Intent.EXTRA_CC,"mailcc@gmail.com");
+                intent.setType("text/html");
+                intent.setPackage("com.google.android.gm");
+                startActivity(intent);
             }
         });
 

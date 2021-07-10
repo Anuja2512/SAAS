@@ -15,7 +15,9 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/header_background"
-            android:padding="10dp">
+            android:padding="10dp" android:layout_alignParentStart="true"
+            android:layout_marginTop="0dp" android:layout_alignParentTop="true" android:layout_alignParentEnd="true"
+            android:layout_marginEnd="-1dp">
 
 
         <TextView
@@ -37,7 +39,7 @@
                 android:fontFamily="@font/amaranthh"
                 android:text="We 'SAAS' Team working on project based on Android since last month. "
                 android:textColor="#FFFFFF"
-                android:textSize="20dp" />
+                android:textSize="20dp"/>
 
 
     </RelativeLayout>
