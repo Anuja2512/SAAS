@@ -38,7 +38,7 @@ Most applications focus on providing immediate access from a list of registered 
 1. Android Studio IDE on your Laptop/Desktop.
 2. Android Smartphone with Lollipop and above android versions.
 3. Internet Connection.
-Getting Started:
+
 
 ### Steps for Installation:
 ### 1. Install the Android Studio IDE on your Laptop/Desktop.
