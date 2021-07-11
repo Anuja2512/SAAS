@@ -50,7 +50,7 @@ public class ContactUsFragment extends Fragment{
         Linkedin1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://www.linkedin.com/in/sayali-desai-0422");
+                gotoUrl("https://www.linkedin.com/in/swarangi-patil");
             }
         });
 
@@ -71,7 +71,7 @@ public class ContactUsFragment extends Fragment{
         linkedin4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://www.linkedin.com/in/sayali-desai-0422");
+                gotoUrl("https://linkedin.com/in/aniket-sable-3a357b194");
             }
         });
 
@@ -99,14 +99,14 @@ public class ContactUsFragment extends Fragment{
         Twitter4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://twitter.com/SayaliDesai15");
+                gotoUrl("https://twitter.com/AniketP40987057?s=08");
             }
         });
 
         Github1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://github.com/SayaliDesai4");
+                gotoUrl("https://github.com/swarangi203");
             }
         });
 
@@ -127,7 +127,7 @@ public class ContactUsFragment extends Fragment{
         Github4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://github.com/SayaliDesai4");
+                gotoUrl("https://github.com/Aniket2802");
             }
         });
 

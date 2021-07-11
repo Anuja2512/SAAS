@@ -11,7 +11,7 @@
 
     <ListView
             android:layout_width="wrap_content"
-            android:layout_height="455dp"
+            android:layout_height="wrap_content"
             android:id="@+id/myListView"
             android:padding="10dp"
             android:layout_marginBottom="123dp"
@@ -25,8 +25,8 @@
 
     <TextView
             android:text="All Reports"
-            android:layout_width="128dp"
-            android:layout_height="68dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/textView20"
             android:layout_above="@+id/myListView"
             android:textSize="30sp"

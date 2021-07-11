@@ -97,7 +97,7 @@ public class DoctorSettingsFragment extends Fragment{
 
             }
         });
-
+                 String MobilePattern = "[0-9]{10}";
 
         applyChangesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +113,7 @@ public class DoctorSettingsFragment extends Fragment{
                                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        String MobilePattern = "[0-9]{10}";
+
                                         for(DataSnapshot snapshot1: snapshot.getChildren()) {
 
                                             if (snapshot1.getKey().equals("Gender")) {
@@ -123,6 +123,8 @@ public class DoctorSettingsFragment extends Fragment{
                                                     ref.setValue(Gender);
                                                 } else {
                                                     gender.setError("Field cannot be Empty");
+                                                    gender.requestFocus();
+                                                    return;
                                                 }
 
                                             }
@@ -133,6 +135,8 @@ public class DoctorSettingsFragment extends Fragment{
                                                     ref.setValue(Username);
                                                 } else {
                                                     username.setError("Field cannot be Empty");
+                                                    username.requestFocus();
+                                                    return;
                                                 }
 
                                             }
@@ -141,9 +145,11 @@ public class DoctorSettingsFragment extends Fragment{
                                                 if(PhoneNo.matches(MobilePattern)){
                                                 DatabaseReference ref = snapshot1.getRef();
                                                 ref.setValue(PhoneNo);
-                                            }
+                                                }
                                                 else{
                                                     phn.setError("Enter valid Phone No. ");
+                                                    phn.requestFocus();
+                                                    return;
                                                 }
                                             }
                                             if(snapshot1.getKey().equals("Name"))
@@ -155,6 +161,8 @@ public class DoctorSettingsFragment extends Fragment{
                                                 }
                                                 else{
                                                     name.setError("Field cannot be Empty");
+                                                    name.requestFocus();
+                                                    return;
                                                 }
 
                                             }

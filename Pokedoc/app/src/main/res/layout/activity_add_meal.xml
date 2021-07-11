@@ -177,8 +177,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:fontFamily="@font/amaranthh"
             app:layout_constraintTop_toBottomOf="@+id/editTextNumber" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="44dp" app:layout_constraintHorizontal_bias="0.792" android:background="#03A9F4"
-            app:backgroundTint="#2196F3" android:id="@+id/button12" android:text="ADD" android:textColor="#FFFFFF"/>
+            android:layout_marginTop="44dp" app:layout_constraintHorizontal_bias="0.792" android:background="@drawable/button_background"
+            app:backgroundTint="@color/Headings" android:id="@+id/button12" android:text="ADD" android:textColor="#FFFFFF"/>
     <EditText
             android:layout_width="201dp"
             android:layout_height="wrap_content"

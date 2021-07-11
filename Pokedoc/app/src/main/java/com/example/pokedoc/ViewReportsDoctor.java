@@ -1,5 +1,6 @@
 package com.example.pokedoc;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -61,11 +63,37 @@ public class ViewReportsDoctor extends AppCompatActivity {
         myPDFListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                UploadFiless uploadFiless= uploadFile.get(i);
-              //  Toast.makeText(ViewReportsDoctor.this, Uri.parse(uploadFiless.getUrl()).toString(), Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(uploadFiless.getUrl()));
-                startActivity(intent);
+                CharSequence options[] = new CharSequence[]{
+                        "Download",
+                        "View",
+                        "Cancel"
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ViewReportsDoctor.this);
+                builder.setTitle("Choose One");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // we will be downloading the pdf
+                        if (which == 0) {
+                            UploadFiless uploadFiless= uploadFile.get(i);
+                            //  Toast.makeText(ViewReportsDoctor.this, Uri.parse(uploadFiless.getUrl()).toString(), Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent(Intent.ACTION_VIEW);
+                            intent.setData(Uri.parse(uploadFiless.getUrl()));
+                            startActivity(intent);
+                        }
+                        // We will view the pdf
+                        if (which == 1) {
+                            UploadFiless uploadFiless= uploadFile.get(i);
+                            Intent intent = new Intent(ViewReportsDoctor.this, OpenPdf.class);
+                            intent.putExtra("url",uploadFiless.getUrl());
+                            Toast.makeText(ViewReportsDoctor.this, Uri.parse(uploadFiless.getUrl()).toString(), Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                        }
+                    }
+                });
+                builder.show();
+
 
             }
         });

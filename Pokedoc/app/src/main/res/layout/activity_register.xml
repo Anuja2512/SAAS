@@ -250,11 +250,11 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="64dp"
-                android:background="#9C2196F3"
+                android:background="@drawable/button_background"
                 android:fontFamily="@font/alegreya_sc_bold_italic"
                 android:text="Submit"
                 android:textColor="#FFFFFF"
-                app:backgroundTint="#AB2196F3"
+                app:backgroundTint="@color/Headings"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
@@ -274,11 +274,10 @@
                 android:textAllCaps="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/RSubmitBtn"
                 app:layout_constraintVertical_bias="0.0" android:textColor="#2196F3"/>
-
         <Button
                 android:id="@+id/dataPickerbtn"
                 style="?android:spinnerStyle"

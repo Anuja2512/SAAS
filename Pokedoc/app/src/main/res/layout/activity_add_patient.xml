@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
             android:layout_marginBottom="216dp"
-            android:background="#AB2196F3"
+            android:background="@drawable/button_background"
             android:fontFamily="@font/amaranth_bold"
             android:text="ADD"
             android:textColor="#FFFFFF"
@@ -50,5 +50,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" app:backgroundTint="#AB2196F3"/>
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" app:backgroundTint="@color/Headings"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

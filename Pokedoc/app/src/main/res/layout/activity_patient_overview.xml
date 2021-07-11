@@ -93,16 +93,16 @@
             <Button
                     android:text="View Prescriptions"
                     android:layout_width="299dp"
-                    android:layout_height="wrap_content" android:id="@+id/button6" android:background="#2196F3"
-                    app:backgroundTint="#2196F3" android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content" android:id="@+id/button6" android:background="@drawable/button_background"
+                    app:backgroundTint="@color/Headings" android:layout_marginTop="20dp"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="40dp" android:layout_marginBottom="10dp"
                     app:icon="?attr/actionModePasteDrawable"/>
             <Button
                     android:text="View Reports"
                     android:layout_width="299dp"
-                    android:layout_height="wrap_content" android:id="@+id/button11" android:background="#2196F3"
-                    app:backgroundTint="#2196F3"
+                    android:layout_height="wrap_content" android:id="@+id/button11" android:background="@drawable/button_background"
+                    app:backgroundTint="@color/Headings"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="40dp" android:layout_marginTop="10dp" app:iconTint="#FFFFFF"
                      android:layout_marginBottom="20dp"/>

@@ -129,8 +129,9 @@ public class PatientOverview extends AppCompatActivity {
                     }
                     if(snapshot1.getKey().equals("Age"))
                     {
-                        String Age = snapshot1.getValue(String.class);
-                        agen.setText(Age);
+                        Long agee = snapshot1.getValue(Long.class);
+                        String Age = agee.toString();
+                        agen.setText("Age: "+Age);
                     }
                 }
             }

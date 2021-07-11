@@ -24,6 +24,9 @@ import com.google.firebase.database.*;
 import com.google.firebase.storage.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 
 public class MyReportsPatientFragment extends Fragment {
     FirebaseAuth mAuth;
@@ -37,9 +40,9 @@ public class MyReportsPatientFragment extends Fragment {
     EditText editPDFName;
     Button btn_upload;
     Button viewPDFFiles;
-
+    ArrayList<String> FileNames = new ArrayList<>();
     StorageReference storageReference;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, reference;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,6 +53,25 @@ public class MyReportsPatientFragment extends Fragment {
         btn_upload = (Button) rootview.findViewById(R.id.btn_Upload);
         btn_filePicker = (Button) rootview.findViewById(R.id.btn_Upload);
         viewPDFFiles=(Button) rootview.findViewById(R.id.btn_viewFiles);
+        reference=FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Reports");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot snapshot1: snapshot.getChildren())
+                {
+                    if (snapshot.exists()) {
+                        for(DataSnapshot snapshot2 : snapshot.getChildren()) {
+                            CollectUserNames((Map<String, Object>) snapshot2.getValue());
+                        }
+                    }
+                }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(), "Error Fetching UserNames..", Toast.LENGTH_SHORT).show();
+            }
+        });
         btn_filePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +89,11 @@ public class MyReportsPatientFragment extends Fragment {
                 editPDFName.setError("Please Enter File Name");
                 editPDFName.requestFocus();
 
+                }
+                if(FileNames.contains(editPDFName.getText().toString()))
+                {
+                    editPDFName.setError("File name already exists, Please enter another file Name");
+                    editPDFName.requestFocus();
                 }
                 else{
                     selectPDFFile();
@@ -137,5 +164,14 @@ public class MyReportsPatientFragment extends Fragment {
                 progressDialog.setMessage("Uploaded:"+(int)progress+"%");
             }
         });
+    }
+    private void CollectUserNames(Map<String, Object> Surveys) {
+        for (Map.Entry<String, Object> entry : Surveys.entrySet()) {
+            if (entry.getKey().toString().equals("name"))
+            {
+                FileNames.add(entry.getValue().toString());
+            }
+
+        }
     }
 }

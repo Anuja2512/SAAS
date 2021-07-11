@@ -80,11 +80,36 @@ public class ViewAllFiles extends AppCompatActivity {
         myPDFListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                UploadFiless uploadFiless= uploadFile.get(i);
-                Toast.makeText(ViewAllFiles.this, Uri.parse(uploadFiless.getUrl()).toString(), Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(uploadFiless.getUrl()));
-                startActivity(intent);
+                CharSequence options[] = new CharSequence[]{
+                        "Download",
+                        "View",
+                        "Cancel"
+                };
+
+                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(ViewAllFiles.this);
+                builder.setTitle("Choose One");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // we will be downloading the pdf
+                        if (which == 0) {
+                            UploadFiless uploadFiless= uploadFile.get(i);
+                            //  Toast.makeText(ViewReportsDoctor.this, Uri.parse(uploadFiless.getUrl()).toString(), Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent(Intent.ACTION_VIEW);
+                            intent.setData(Uri.parse(uploadFiless.getUrl()));
+                            startActivity(intent);
+                        }
+                        // We will view the pdf
+                        if (which == 1) {
+                            UploadFiless uploadFiless= uploadFile.get(i);
+                            Intent intent = new Intent(ViewAllFiles.this, OpenPdf.class);
+                            intent.putExtra("url",uploadFiless.getUrl());
+                            Toast.makeText(ViewAllFiles.this, Uri.parse(uploadFiless.getUrl()).toString(), Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                        }
+                    }
+                });
+                builder.show();
 
             }
         });

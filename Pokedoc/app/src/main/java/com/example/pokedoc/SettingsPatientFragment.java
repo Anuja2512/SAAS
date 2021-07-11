@@ -157,11 +157,13 @@ public class SettingsPatientFragment extends Fragment
 
             }
         });
+
+        String MobilePattern = "[0-9]{10}";
         patapplyChangesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(getActivity(), "heyyyy", Toast.LENGTH_SHORT).show();
-                String MobilePattern = "[0-9]{10}";
+
                 AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
                 alertDialog.setTitle("Alert");
                 alertDialog.setCancelable(true);
@@ -196,6 +198,8 @@ public class SettingsPatientFragment extends Fragment
                                                 else{
 
                                                     patgender.setError("Field cannot be Empty");
+                                                    patgender.requestFocus();
+                                                    return;
                                                 }
 
                                             }
@@ -208,20 +212,23 @@ public class SettingsPatientFragment extends Fragment
                                                 }
                                                 else{
                                                     patusername.setError("Field cannot be Empty");
+                                                    patusername.requestFocus();
+                                                    return;
                                                 }
 
                                             }
                                             if(snapshot1.getKey().equals("Phone Number"))
                                             {
                                                 String PhoneNo = patphn.getText().toString();
-                                                if(!PhoneNo.isEmpty()) {
-                                                    if(PhoneNo.matches(MobilePattern)){
+                                                if(PhoneNo.matches(MobilePattern)){
                                                     DatabaseReference ref = snapshot1.getRef();
                                                     ref.setValue(PhoneNo);
-                                                    }
                                                 }
+
                                                 else{
                                                     patphn.setError("Enter valid Phone No. ");
+                                                    patphn.requestFocus();
+                                                    return;
                                                 }
                                             }
                                             if(snapshot1.getKey().equals("Name"))
@@ -233,6 +240,8 @@ public class SettingsPatientFragment extends Fragment
                                                 }
                                                 else{
                                                     patname.setError("Field cannot be Empty");
+                                                    patname.requestFocus();
+                                                    return;
                                                 }
 
                                             }

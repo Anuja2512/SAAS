@@ -97,14 +97,14 @@ public class PatientAboutUs extends AppCompatActivity
         linkedin4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://www.linkedin.com/in/sayali-desai-0422");
+                gotoUrl("https://linkedin.com/in/aniket-sable-3a357b194");
             }
         });
 
         Twitter1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://twitter.com/SayaliDesai15");
+                gotoUrl("https://twitter.com/SwarangiPatil1");
             }
         });
 
@@ -125,7 +125,7 @@ public class PatientAboutUs extends AppCompatActivity
         Twitter4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://twitter.com/SayaliDesai15");
+                gotoUrl("https://twitter.com/AniketP40987057?s=08");
             }
         });
 
