@@ -243,7 +243,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
     public void registerNewUser(String mail, String pswd, String cpass, String Username, String phn, String name, String gender, int age, String role) {
-
+        String MobilePattern = "[0-9]{10}";
         if (TextUtils.isEmpty(Username)) {
             username.setError("Please enter Username.");
             username.requestFocus();
@@ -256,7 +256,12 @@ public class RegisterActivity extends AppCompatActivity {
             phone.setError("Please enter Phone No.");
             phone.requestFocus();
             return;
-        } else if (TextUtils.isEmpty(pswd)) {
+        } else if (!phn.matches(MobilePattern)){
+            phone.setError("Please enter valid Phone No. ");
+            phone.requestFocus();
+            return;
+        }
+        else if (TextUtils.isEmpty(pswd)) {
             password.setError("Please enter Password.");
             password.requestFocus();
             return;

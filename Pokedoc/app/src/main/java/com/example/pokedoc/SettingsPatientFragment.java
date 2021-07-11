@@ -161,7 +161,7 @@ public class SettingsPatientFragment extends Fragment
             @Override
             public void onClick(View v) {
                 //Toast.makeText(getActivity(), "heyyyy", Toast.LENGTH_SHORT).show();
-
+                String MobilePattern = "[0-9]{10}";
                 AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
                 alertDialog.setTitle("Alert");
                 alertDialog.setCancelable(true);
@@ -215,11 +215,13 @@ public class SettingsPatientFragment extends Fragment
                                             {
                                                 String PhoneNo = patphn.getText().toString();
                                                 if(!PhoneNo.isEmpty()) {
+                                                    if(PhoneNo.matches(MobilePattern)){
                                                     DatabaseReference ref = snapshot1.getRef();
                                                     ref.setValue(PhoneNo);
+                                                    }
                                                 }
                                                 else{
-                                                    patphn.setError("Field cannot be Empty");
+                                                    patphn.setError("Enter valid Phone No. ");
                                                 }
                                             }
                                             if(snapshot1.getKey().equals("Name"))

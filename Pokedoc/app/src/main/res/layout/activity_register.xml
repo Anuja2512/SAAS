@@ -112,11 +112,11 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="56dp"
                 android:fontFamily="@font/amaranth_bold"
-                android:text="Confirm Password:"
+                android:text="Confirm:"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/RPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/RPassword"/>
 
         <EditText
                 android:id="@+id/RNameTxt"
@@ -193,7 +193,7 @@
                     android:layout_marginRight="24dp"
                     android:checked="false"
                     android:fontFamily="@font/amaranth_italic"
-                    android:text="Male" />
+                    android:text="Male" android:textColor="#2196F3"/>
 
             <RadioButton
                     android:id="@+id/Female"
@@ -205,7 +205,7 @@
                     android:checked="true"
                     android:fontFamily="@font/amaranth_italic"
                     android:text="Female"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent" android:textColor="#2196F3"/>
 
             <EditText
                     android:id="@+id/REnrollmentTxt"
@@ -277,7 +277,7 @@
                 app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/RSubmitBtn"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0" android:textColor="#2196F3"/>
 
         <Button
                 android:id="@+id/dataPickerbtn"
@@ -289,9 +289,9 @@
                 android:fontFamily="@font/amaranthh"
                 android:onClick="opendatepicker"
                 android:text="JAN 01 2021"
-                android:textColor="#000000"
+                android:textColor="#2196F3"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/raiogroup" />
+                app:layout_constraintTop_toBottomOf="@+id/raiogroup"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

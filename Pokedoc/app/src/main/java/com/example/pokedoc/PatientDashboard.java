@@ -96,13 +96,15 @@ public class PatientDashboard extends AppCompatActivity {
     public void onBackPressed(){
         new AlertDialog.Builder(this)
                 .setMessage("Do you wish to Logout or Exit?")
-                .setCancelable(false)
+                .setCancelable(true)
 
                 .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                        System.exit(0);
+                        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                        homeIntent.addCategory( Intent.CATEGORY_HOME );
+                        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeIntent);
                     }
                 })
                 .setPositiveButton("Logout", new DialogInterface.OnClickListener() {

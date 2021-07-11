@@ -113,43 +113,37 @@ public class DoctorSettingsFragment extends Fragment{
                                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        String MobilePattern = "[0-9]{10}";
+                                        for(DataSnapshot snapshot1: snapshot.getChildren()) {
 
-                                        for(DataSnapshot snapshot1: snapshot.getChildren())
-                                        {
-
-                                            if(snapshot1.getKey().equals("Gender"))
-                                            {
+                                            if (snapshot1.getKey().equals("Gender")) {
                                                 String Gender = gender.getText().toString();
-                                                if(!Gender.isEmpty()) {
+                                                if (!Gender.isEmpty()) {
                                                     DatabaseReference ref = snapshot1.getRef();
                                                     ref.setValue(Gender);
-                                                }
-                                                else{
+                                                } else {
                                                     gender.setError("Field cannot be Empty");
                                                 }
 
                                             }
-                                            if(snapshot1.getKey().equals("Username"))
-                                            {
+                                            if (snapshot1.getKey().equals("Username")) {
                                                 String Username = username.getText().toString();
-                                                if(!Username.isEmpty()) {
+                                                if (!Username.isEmpty()) {
                                                     DatabaseReference ref = snapshot1.getRef();
                                                     ref.setValue(Username);
-                                                }
-                                                else{
+                                                } else {
                                                     username.setError("Field cannot be Empty");
                                                 }
 
                                             }
-                                            if(snapshot1.getKey().equals("Phone Number"))
-                                            {
+                                            if (snapshot1.getKey().equals("Phone Number")) {
                                                 String PhoneNo = phn.getText().toString();
-                                                if(!PhoneNo.isEmpty()) {
-                                                    DatabaseReference ref = snapshot1.getRef();
-                                                    ref.setValue(PhoneNo);
-                                                }
+                                                if(PhoneNo.matches(MobilePattern)){
+                                                DatabaseReference ref = snapshot1.getRef();
+                                                ref.setValue(PhoneNo);
+                                            }
                                                 else{
-                                                    phn.setError("Field cannot be Empty");
+                                                    phn.setError("Enter valid Phone No. ");
                                                 }
                                             }
                                             if(snapshot1.getKey().equals("Name"))

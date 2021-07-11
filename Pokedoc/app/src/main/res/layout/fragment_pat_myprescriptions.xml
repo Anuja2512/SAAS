@@ -20,17 +20,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-            android:layout_width="307dp"
-            android:layout_height="483dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" android:layout_marginTop="36dp">
+            app:layout_constraintTop_toBottomOf="@+id/imageView8" android:layout_marginTop="16dp">
 
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/mainlayout">
+                android:layout_height="wrap_content" android:id="@+id/mainlayout" android:padding="30dp">
         </LinearLayout>
     </ScrollView>
+    <ImageView
+            android:layout_width="225dp"
+            android:layout_height="158dp" app:srcCompat="@drawable/medicinepad"
+            android:id="@+id/imageView8"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

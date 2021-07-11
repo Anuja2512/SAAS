@@ -26,7 +26,8 @@
             android:id="@+id/mainlayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" android:layout_marginTop="36dp">
+            app:layout_constraintTop_toBottomOf="@+id/imageView10" android:layout_marginTop="36dp"
+    >
 
         <EditText
                 android:layout_width="match_parent"
@@ -45,7 +46,7 @@
                 android:text="Upload"
                 android:layout_marginTop="50dp"
                 android:background="#AB2196F3"
-                app:backgroundTint="#AB2196F3"/>
+                app:backgroundTint="#AB2196F3" android:textColor="#FFFFFF"/>
 
         <Button
 
@@ -57,9 +58,15 @@
                 android:layout_marginTop="30dp"
                 android:id="@+id/btn_viewFiles"
                 android:background="#AB2196F3"
-                app:backgroundTint="#AB2196F3"/>
+                app:backgroundTint="#AB2196F3" android:textColor="#FFFFFF"/>
 
     </LinearLayout>
+    <ImageView
+            android:layout_width="258dp"
+            android:layout_height="154dp" app:srcCompat="@drawable/prescriptionimage"
+            android:id="@+id/imageView10" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView11"
+            android:layout_marginTop="24dp" app:layout_constraintHorizontal_bias="0.496"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

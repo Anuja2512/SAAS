@@ -10,9 +10,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/layout" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="1.0">
+    >
 
         <TextView
                 android:id="@+id/textHello"
@@ -27,13 +27,15 @@
                 android:text="Add Meal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/button8"
-                android:background="@android:color/transparent"
-                app:backgroundTint="@android:color/transparent" android:textColor="#2196F3"
-                android:textSize="14sp" app:icon="@android:drawable/ic_menu_add"
+                android:textColor="#2196F3"
+                android:textSize="18sp" app:icon="@android:drawable/ic_menu_add"
                 app:iconTint="#2196F3" app:iconSize="25dp"
                 android:fontFamily="@font/amaranth_bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView5"/>
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:iconPadding="4dp" android:layout_marginTop="12dp"
+                app:layout_constraintHorizontal_bias="0.498" app:cornerRadius="100dp"
+                android:background="#3C008080" app:backgroundTint="@android:color/transparent"/>
         <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
@@ -46,10 +48,12 @@
                 app:layout_constraintStart_toEndOf="@+id/textHello" app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="16dp"/>
         <ScrollView
-                android:layout_width="408dp"
-                android:layout_height="510dp"
-                app:layout_constraintTop_toBottomOf="@+id/button8" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="4dp" app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:layout_constraintHorizontal_bias="0.0" app:layout_constraintBottom_toBottomOf="parent">
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
@@ -69,13 +73,20 @@
                 </androidx.recyclerview.widget.RecyclerView>
                 <com.anychart.AnyChartView
                         android:id="@+id/any_chart_view"
-                        android:layout_height="400dp" android:layout_width="wrap_content"
+                        android:layout_height="400dp" android:layout_width="390dp"
                         android:layout_marginTop="8dp"
                         android:background="@android:color/transparent" android:layout_marginBottom="30dp"
-                        android:layout_marginRight="12dp" android:layout_marginLeft="12dp">
+                        android:layout_gravity="center_horizontal">
                 </com.anychart.AnyChartView>
             </LinearLayout>
         </ScrollView>
+        <ImageView
+                android:layout_width="184dp"
+                android:layout_height="137dp" app:srcCompat="@drawable/meal_clock" android:id="@+id/imageView7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497" app:layout_constraintTop_toBottomOf="@+id/button8"
+                android:layout_marginTop="16dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

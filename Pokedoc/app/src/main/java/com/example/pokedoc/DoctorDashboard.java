@@ -154,7 +154,7 @@ public class DoctorDashboard extends AppCompatActivity implements NavigationView
     public void onBackPressed(){
         new AlertDialog.Builder(this)
                 .setMessage("Do you wish to Logout or Exit?")
-                .setCancelable(false)
+                .setCancelable(true)
 
                 .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
                     @Override
